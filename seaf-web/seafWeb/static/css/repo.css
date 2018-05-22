@@ -1,0 +1,123 @@
+.reposHead{
+    height:50px;
+}
+.head{
+    background: #E0ECFF;
+    width:auto;
+    height:40px;
+    border-top:1px solid #95B8E7;
+    border-left:1px solid #95B8E7;
+    border-right:1px solid #95B8E7;
+    color: #0E2D5F;
+}
+.user{
+    height: 40px;
+    line-height:40px;
+    float: right;
+}
+.picture{
+    width: 36px;
+    height: 36px;
+    border-radius: 36px;
+}
+.user .btn-group .dropdown-toggle{
+    background: #f3f3f2;
+}
+.dropdown-menu{
+    right:10px;
+}
+.dropdown-menu .logout a{
+    color: #0E2D5F;
+    text-align: center;
+    display: block;
+    height:40px;
+    line-height:40px;
+    text-decoration: none;
+
+}
+.reposHead{
+    background: #f3f3f2;
+}
+.logoText {
+    color: #446cb3;
+    font-size: 22px;
+    float: left;
+    font-weight: bold;
+    margin: 10px 0 0 20px;
+}
+.logoImg{
+    padding-left:20px;
+}
+.logoImg img{
+    float: left;
+    padding: 4px 0 0 6px;
+    width: 46px;
+    height: 46px;
+}
+
+#myTab{
+    background:#f3f3f2;
+    border:none;
+    padding:20px 0;
+}
+#myTab li{
+    width:100%;
+    display: inline-block;
+    text-align: center;
+}
+#myTab li.active{
+    background: #e7e7e6;
+}
+#myTab li.active a{
+    color: #446bb3;
+    background: #e7e7e6;
+    border:none;
+}
+#myTab li a{
+    color: #333;
+    font-weight: bold;
+}
+
+
+
+
+.tabs-header, .tabs-tool {
+    background-color: #f3f3f2;
+}
+.tabs li a.tabs-inner {
+    color: #333333;
+    background-color: #f3f3f2;
+    background: #f3f3f2;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFF5FF,endColorstr=#E0ECFF,GradientType=0);
+}
+
+.tabs li a.tabs-inner {
+    border:none;
+}
+
+.tabs-header-left .tabs li.tabs-selected a.tabs-inner {
+    background: #e7e7e6;
+}
+
+.tabs li.tabs-selected a.tabs-inner {
+     border:none;
+     color: #333333;
+}
+
+@media (min-width: 992px) {
+    .col-md-10 {
+        width: 83.33333333% !important;
+    }
+}
+
+/*同步等各类按钮的样式*/
+.optionBtn{
+    padding: 3px 8px;
+    background: #6386c7;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    float: left;
+    margin-right: 4px;
+}

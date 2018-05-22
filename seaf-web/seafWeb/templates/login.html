@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>欢迎使用seafile</title>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <script src="../static/jQuery-2.2.0.min.js"></script>
+</head>
+<body>
+
+    <div class="content">
+        <div class="loginHead">
+            <h3>登  录</h3>
+        </div>
+        <div class="loginCon">
+            <form method="post">
+                <p class="loginRow">
+                    <label for="serveraddr">云盘网址:</label>
+                    <input type="text" id="serveraddr" name="serveraddr">
+                    <span>例如：https://seacloud.cc</span>
+                    <span>或者：http://192.168.1.24:8000</span>
+                </p>
+                <p class="loginRow">
+                    <label for="username">邮箱/用户名:</label>
+                    <input type="text" id="username" name="username">
+                </p>
+                <p class="loginRow">
+                    <label for="passwd">密码:</label>
+                    <input type="password" id="passwd" name="passwd">
+                </p>
+                {% if err %}
+                <p class="loginError">{{ err }}</p>
+                {% endif %}
+
+                <p class="loginFoot">
+                    <button id="loginBtn" type="submit">登 录</button>
+                </p>
+
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        $('#loginBtn').click(function(){
+            var username = $('#username').val(),
+                passwd = $('#passwd').val(),
+                serveraddr = $('#serveraddr').val();
+            $.ajax({
+                url:'/login',
+                timeout:5000,
+                type:'POST',
+                data:{
+                    username:username,
+                    passwd:passwd,
+                    serveraddr:serveraddr
+                },
+                datatype:'json',
+                success:function(data){
+                    console.log(data);
+                },
+                complete:function(XMLHttpRequest,status){
+
+                    if(status == 'timeout'){
+                        window.location.href='/404';
+                    }
+                }
+            })
+        })
+    </script>
+
+</body>
+
+
+</html>

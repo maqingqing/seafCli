@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../static/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div>
+       <table>
+            <tr>
+                <th></th>
+                <th>Library Name</th>
+                <th>Size</th>
+                <th>Last Update</th>
+                <th>Permission</th>
+                <th>Sync Status</th>
+                <th></th>
+                <th>Local Path</th>
+            </tr>
+            {% for repo in repo_sync_list %}
+
+            <tr>
+                <td>
+                    {% if repo.encrypted == 1 %}
+                    <img src="../static/img/sync-folder-encrypt-20.png">
+                    {% else %}
+                    <img src="../static/img/sync-folder-20.png">
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="/repo/file_list?repo_id={{ repo.id }}">{{ repo.name }}</a>
+                </td>
+                <td> {{ repo.size }}</td>
+                <td> {{ repo.time }}</td>
+                <td> {{ repo.permission }}</td>
+
+                {% if repo.sync_status == 'synchronized' %}
+                <td>{{ repo.sync_status }}</td>
+                <td> <input class="optionBtn" type="button" value="desync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="desync(this)" /></td>
+                {% else %}
+                <td>
+                    <span>{{ repo.sync_status }}</span>
+                    <div class="easyui-progressbar" data-options="value:0" style="width:100px;" data-progressname="{{ repo.id }}"></div>
+                    <script type="text/javascript" async="async">
+                        progress('{{ repo.id }}');
+                    </script>
+                </td>
+                <td> <input type="button" value="desync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="desync(this)" /></td>
+                {% endif %}
+
+                <td>
+                     <a href="file://{{ repo.sync_path }}">{{ repo.sync_path }}</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </table>
+    </div>
+
+</body>
+
+</html>

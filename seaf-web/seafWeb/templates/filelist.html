@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>欢迎使用seafile</title>
+<script src="../static/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <a href="/repo">myLibrary</a>
+
+        <table>
+            <tr>
+                <th></th>
+                <th>File Name</th>
+                <th>Size</th>
+                <th>Last Update</th>
+                <th>permission</th>
+            </tr>
+            {% for file in file_list %}
+            <tr>
+               {% ifequal file.type 'dir' %}
+                <td><img src="../static/img/folder-24.png"></td>
+                <td>
+                    <a  data-repoid="{{ repo_id }}" href="/repo/file_list?repo_id={{ repo_id }}&path={{ parent_dir }}/{{ file.name }}">{{ file.name }}</a>
+                </td>
+                {% else %}
+                <td><img src="../static/img/file.png"></td>
+                <td>
+                    <a  data-repoid="{{ repo.id }}" href="">{{ file.name }}</a>
+                </td>
+                {% endifequal %}
+
+                {% if file.size %}
+                <td>{{ file.size }}</td>
+                {% else %}
+                <td>-</td>
+                {% endif %}
+                <td> {{ file.mtime }}</td>
+                <td> {{ file.permission }}</td>
+                <td>
+                    <img src="../static/img/download.png" data-filename="{{ parent_dir }}/{{ file.name }}" data-repoid="{{ repo_id }}" onclick="download(this)">
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+<script type="text/javascript">
+
+    function download(e){
+
+        $.get("/repo/file_list/download",{'repo_id': e.getAttribute('data-repoid'), 'file_name': e.getAttribute('data-filename')},function(data){
+               if(data.state == 1){
+                    var $eleForm = $("<form method='get'></form>");
+                    $eleForm.attr("action",data.download_url);
+                    $(document.body).append($eleForm);
+                    //提交表单，实现下载
+                    $eleForm.submit();
+               }
+        })
+
+
+    }
+
+    function sync(e)
+    {
+        syn = prompt("请输入路径:");
+        $.get("/sync?path="+ syn + "&repo_id=" + e.getAttribute('id'),function(data){
+            if (data.state == 1){
+                alert('Success')
+            }else {
+                alert("Failed\n" + data.res);
+            }
+        });
+    }
+
+    function desync(e) {
+        sync_path = e.getAttribute('data-syncpath')
+        $.get("/desync?path="+ sync_path,function(data,status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    }
+
+    function returnLibrary(e) {
+
+    }
+
+    function file_list(e) {
+        $.get("/repo/file_list?repo_id=" + e.getAttribute('data-repoid'), function(data){
+
+        });
+    }
+</script>
+</html>

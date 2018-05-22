@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Seafile</title>
+	<link rel="stylesheet" type="text/css" href="../static/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../static/themes/icon.css">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/repo.css">
+	<script type="text/javascript" src="../static/jQuery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="../static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../static/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../static/js/get-sync-progress.js"></script>
+
+</head>
+<body>
+
+
+    <div id="rate" style="width:100%" align="right">
+        <span id="upload_rate" style="width:50%">upload: 0.0 KB/s</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="download_rate">download: 0.0 KB/s</span>
+	</div>
+    <div  class="" title="{{ username }},welcome use seafile...." style="width:auto;height:auto;" data-options="footer:'#rate'">
+        <section class="reposHead">
+            <div class="logoImg">
+                <img src="../static/img/mylogo.png" alt="">
+                <span class="logoText">Paladin 云盘</span>
+            </div>
+            <div class="user">
+    {#            <div class="userN">#}
+    {#                {{ username }}#}
+    {#            </div>#}
+                <div class="btn-group">
+
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                        <img class="picture" src="../static/img/default.png" alt="">
+                        {{ username }}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">
+                                 <img class="picture" src="../static/img/default.png" alt="">
+                                 <span>{{ serveraddr }}</span>
+                            </a>
+
+                        </li>
+                        <li class="logout"><a href="/logout">登出</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <div id="library_tabs" class="easyui-tabs row" tabPosition="left" >
+		<div title="MyLibrary" data-options="">
+			<div class="table-responsive" >
+                <caption>我的资料库</caption>
+                <table class="table">
+
+                    <thead>
+                        <tr>
+                            <th>Library Name</th>
+                            <th>Size</th>
+                            <th>Last Update</th>
+                            <th>Sync Status</th>
+                            <th>Option</th>
+                            <th>Local Path</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for repo in repo_list %}
+                        <tr>
+                            <td>
+                                {% if repo.encrypted == 1 %}
+                                <img src="../static/img/sync-folder-encrypt-20.png">
+                                {% else %}
+                                <img src="../static/img/sync-folder-20.png">
+                                {% endif %}
+                                <a href="/repo/file_list?repo_id={{ repo.id }}">{{ repo.name }}</a>
+                            </td>
+                            <td> {{ repo.size }}</td>
+                            <td> {{ repo.time }}</td>
+
+                            {% if repo.sync_status == 'unsync' %}
+{#                                如果资料库状态是未同步，则显示同步和下载按钮#}
+                            <td> {{ repo.sync_status }}
+
+                            </td>
+                            <td>
+                                <input class="optionBtn" type="button" value="sync" data-url="/sync" data-toggle="modal" data-target="#{{ repo.name }}" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" onclick="sync(this)" />
+                                <input class="optionBtn" type="button" value="pull" data-url="/repo/download" data-toggle="modal" data-target="#{{ repo.name }}" data-repoid="{{ repo.id }}" onclick="sync(this)"/>
+                            </td>
+                            {% elif repo.sync_status == 'synchronized' %}
+{#                                如果资料库显示已同步，则显示需晓同步按钮#}
+                            <td>{{ repo.sync_status }}</td>
+                            <td> <input class="optionBtn" data-toggle="modal" data-target="#{{ repo.name }}desync" type="button" value="desync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}""/></td>
+
+                            {% else %}
+{#                                除此之外应该是在同步过程中。则显示同步速度和进度#}
+                            <td>{{ repo.sync_status }}</td>
+                            <td>
+                                <input class="optionBtn" type="button" value="cancel-sync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="cancel(this)" />
+                                <div class="easyui-progressbar" data-options="value:0" style="width:50px;float:left" data-progressname="{{ repo.id }}"></div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span>0.0 KB/s</span>
+                                <script type="text/javascript" async="async">
+                                        progress('{{ repo.id }}');
+                                </script>
+                            </td>
+
+                            {% endif %}
+
+                            {% if repo.sync_path %}
+                            <td>
+                                <a href="file://{{ repo.sync_path }}">{{ repo.sync_path }}</a>
+                            </td>
+                            {% else %}
+                                <td>
+                                    <a href="#">none</a>
+                                </td>
+                            {% endif %}
+                        </tr>
+{#                            同步操作模态框#}
+
+                        <div id="{{ repo.name }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel">
+                                            请输入同步路径
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <span>同步路径</span>
+                                        <input type="text" class="sync_path" placeholder="/home/paladin/">
+                                        {% if repo.encrypted == 1 %}
+
+                                            <span>密码</span>
+                                            <input type="password" class="sync_pass">
+                                        {% endif %}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                        </button>
+                                        <button type="button" class="btn btn-primary syncSub" data-dismiss="modal">
+                                            提交
+                                        </button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal -->
+                        </div>
+{#                        取消同步模态框#}
+                            <div id="{{ repo.name }}desync" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel">
+                                                取消同步
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                           资料库{{ repo.name }}取消同步
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                            <button type="button" class="btn btn-primary desyncSub" data-dismiss="modal">
+                                                确定
+                                            </button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+
+                        {% endfor %}
+                     </tbody>
+                </table>
+            </div>
+		</div>
+		<div title="Shared" style="padding:10px" data-options="href : '/repo?page=shared'">
+
+		</div>
+		<div title="Public" style="padding:10px" data-options="href : '/repo?page=public'">
+
+		</div>
+        <div title="Group" style="padding:10px" data-options="href : '/repo?page=group'">
+
+		</div>
+        <div title="Synchronized" style="padding:10px" data-options="href : '/repo?page=synchronized'">
+
+		</div>
+	</div>
+    </div>
+
+<script type="text/javascript">
+
+    $(function(){
+        $('.tabs-header.tabs-header-left').addClass('col-md-2');
+    $('.tabs-panels.tabs-panels-right').addClass('col-md-10');
+    });
+
+    function download(e) {
+        var download_dir = prompt("请输入路径:");
+        var passwd;
+
+        $.post("/repo/download",{'repo_id':e.getAttribute('data-repoid'), 'download_dir': download_dir, 'passwd': passwd},function(data){
+            if (data.state == 1){
+                 $.messager.alert('提示', "资料库正在下载在" + download_dir +",并绑定同步", 'info', function() {
+                        refreshTab();
+                });
+            }else if(data.state == -1){
+                passwd = prompt("请输入密码:");
+                $.post("/repo/download",{'repo_id':e.getAttribute('data-repoid'), 'download_dir': download_dir, 'passwd': passwd},function(data){
+                    if (data.state == 1){
+                        $.messager.alert('提示', "资料库正在下载在" + download_dir +",并绑定同步", 'info', function() {
+                            refreshTab();
+                        });
+                    }else {
+                        alert("Failed\n" + data.res);
+                    }});
+            }else {
+                alert("Failed\n" + data.res);
+            }
+        });
+    }
+
+    function sync(e){
+        var passwd;
+        var sync_path;
+        var reqUrl = $(e).attr('data-url');
+        $('.syncSub').click(function(e){
+            //获取对应的同步路径
+            sync_path = $(this).parent().siblings('.modal-body').children('.sync_path').val();
+            console.log(sync_path);
+            if($(this).parent().siblings('.modal-body').children('.sync_pass')){
+                passwd = $(this).parent().siblings('.modal-body').children('.sync_pass').val();
+            }
+            syncAjax(reqUrl);
+        });
+        function syncAjax(url){
+            $.post(url,{'repo_id':e.getAttribute('data-repoid'), 'path': sync_path, 'passwd': passwd},function(data){
+                console.log(data);
+                if (data.state == 1){
+{#                    $.messager.alert('提示', sync_path + "正在于" + e.getAttribute('data-reponame') +"绑定同步", 'info', function() {#}
+{#                        //window.parent.location.reload(true);#}
+                        refreshTab();
+{#                    });#}
+                }else if(data.state == -1){
+{#                    passwd = prompt("请输入密码:");#}
+                    $.post("/sync",{'repo_id':e.getAttribute('data-repoid'), 'path': sync_path, 'passwd': passwd},function(data){
+                        if(data.state == 1){
+                            $.messager.alert('提示', sync_path + "正在于" + e.getAttribute('data-reponame') +"绑定同步", 'info', function() {
+                                //window.parent.location.reload(true);
+                                refreshTab();
+                            });
+                        }else {
+                            alert("Failed\n" + data.res);
+                        }});
+                }else {
+                    alert("Failed\n" + data.res);
+                }
+            });
+        }
+    }
+
+
+    function desync(e) {
+        sync_path = e.getAttribute('data-syncpath');
+        $.get("/desync?path="+ sync_path,function(data){
+            refreshTab();
+        });
+    }
+
+    $('.desyncSub').click(function(){
+        var btnId = '#'+$(this).parents('.modal').attr('id');
+        desync($("[data-target='"+btnId+"']")[0]);
+    });
+
+     function cancel(e) {
+        repo_id = e.getAttribute('data-repoid')
+        $.get("/cancel?repoid="+ repo_id,function(data){
+                if(data.state == 1){
+{#                    $.messager.alert('提示',  "已取消同步", 'info', function() {#}
+                        //window.parent.location.reload(true);
+                        refreshTab();
+
+{#                    });#}
+                }
+                else{
+                    alert("Failed\n" + data.res)
+                }
+
+        });
+    }
+
+
+    function addLibrary(e) {
+        alert("please wait")
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#    <script ></script>#}
+{#</head>#}
+{#<body>#}
+{#    <h2>连接超时，服务器错误</h2>#}
+{#</body>#}
+{#</html>#}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../static/jQuery-2.2.0.min.js"></script>
+    <style type="text/css">
+    .phcolor{ color:#666;}
+    .box {position:relative;font-size: 14px;}
+    .box span{position: absolute;left: 0px;font-size: 14px;display: none;}
+    </style>
+</head>
+<body>
+<div class="box">
+    <input class="ipt" placeholder="输入文字" type="text" id="ipt">
+    <span class="ipt_abs">输入文字</span>
+</div>
+
+
+</body>
+<script type="text/javascript">
+
+             $(function(){
+            //判断浏览器是否支持placeholder属性
+            supportPlaceholder='placeholder'in document.createElement('input');
+
+            console.log(supportPlaceholder);
+            $('.ipt').keyup( function(){
+                var x = $(this).val().length;
+                console.log(x);
+                if(x == 12){
+                    alert('tanchhuang');
+                }
+            });
+
+
+             placeholder=function(input){
+
+                  var text = input.attr('placeholder');
+                  defaultValue = input.defaultValue;
+
+                 if(!defaultValue){
+
+                        input.val(text).addClass("phcolor");
+                 }
+
+                 input.focus(function(){
+
+                         if(input.val() == text){
+
+                        $(this).val("");
+                         }
+                 });
+
+
+                 input.blur(function(){
+
+                         if(input.val() == ""){
+
+                             $(this).val(text).addClass("phcolor");
+                         }
+                 });
+
+                 //输入的字符不为灰色
+                 input.keydown(function(){
+                        console.log('shuru');
+
+                         $(this).removeClass("phcolor");
+                 })
+             };
+
+         //当浏览器不支持placeholder属性时，调用placeholder函数
+         if(!supportPlaceholder){
+
+                    $('input').each(function(){
+
+                     text = $(this).attr("placeholder");
+
+                     if($(this).attr("type") == "text"){
+
+                         placeholder($(this));
+                     }
+                 })
+        }
+})
+    </script>
+</html>
