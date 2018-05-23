@@ -35,7 +35,7 @@
 
                 {% if repo.sync_status == 'synchronized' %}
                 <td>{{ repo.sync_status }}</td>
-                <td> <input class="optionBtn" data-toggle="modal" data-target="#s{{ repo.name }}desync" type="button" value="desync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}"/></td>
+                <td> <input class="optionBtn" data-toggle="modal" data-target="#s{{ repo.name }}desync" type="button" value="desync"/></td>
 
                 {% else %}
                 <td>
@@ -70,7 +70,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">取消
                                 </button>
-                                <button type="button" class="btn btn-primary desyncSub" data-dismiss="modal">
+                                <button type="button" class="btn btn-primary desyncSub" data-dismiss="modal" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="desync(this)">
                                     确定
                                 </button>
                             </div>

@@ -18,8 +18,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1168">
-              <caret line="138" column="13" lean-forward="true" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
+            <state relative-caret-position="412">
+              <caret line="114" column="42" lean-forward="false" selection-start-line="114" selection-start-column="42" selection-end-line="114" selection-end-column="42" />
               <folding>
                 <element signature="e#15#51#0" expanded="true" />
               </folding>
@@ -30,27 +30,37 @@
       <file leaf-file-name="homepage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/templates/homepage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="207" column="48" lean-forward="true" selection-start-line="207" selection-start-column="48" selection-end-line="207" selection-end-column="48" />
+            <state relative-caret-position="-722">
+              <caret line="86" column="60" lean-forward="true" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1527046715875" expanded="false" signature="763:773" ph="..." />
-                <marker date="1527046715875" expanded="false" signature="832:841" ph="..." />
-                <marker date="1527046715875" expanded="false" signature="879:885" ph=" " />
-                <marker date="1527046715875" expanded="false" signature="885:891" ph=" " />
-                <marker date="1527046715875" expanded="false" signature="891:897" ph=" " />
-                <marker date="1527046715875" expanded="false" signature="897:903" ph=" " />
+                <marker date="1527061081859" expanded="false" signature="763:773" ph="..." />
+                <marker date="1527061081859" expanded="false" signature="832:841" ph="..." />
+                <marker date="1527061081859" expanded="false" signature="879:885" ph=" " />
+                <marker date="1527061081859" expanded="false" signature="885:891" ph=" " />
+                <marker date="1527061081859" expanded="false" signature="891:897" ph=" " />
+                <marker date="1527061081859" expanded="false" signature="897:903" ph=" " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="repo.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="jump.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/seafWeb/templates/jump.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="57" column="49" lean-forward="true" selection-start-line="55" selection-start-column="39" selection-end-line="57" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="repo.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/static/css/repo.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="135" column="6" lean-forward="true" selection-start-line="135" selection-start-column="6" selection-end-line="135" selection-end-column="6" />
+            <state relative-caret-position="366">
+              <caret line="136" column="16" lean-forward="true" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -66,21 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seafWeb/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="28" column="30" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="shared.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/shared.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="42" column="48" lean-forward="true" selection-start-line="42" selection-start-column="48" selection-end-line="42" selection-end-column="48" />
+            <state relative-caret-position="-38">
+              <caret line="49" column="133" lean-forward="false" selection-start-line="49" selection-start-column="133" selection-end-line="49" selection-end-column="133" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -91,8 +91,8 @@
       <file leaf-file-name="public.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/public.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="168" column="34" lean-forward="true" selection-start-line="79" selection-start-column="20" selection-end-line="168" selection-end-column="34" />
+            <state relative-caret-position="186">
+              <caret line="50" column="134" lean-forward="false" selection-start-line="50" selection-start-column="134" selection-end-line="50" selection-end-column="134" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -103,8 +103,8 @@
       <file leaf-file-name="group.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/group.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="63" column="81" lean-forward="false" selection-start-line="63" selection-start-column="81" selection-end-line="63" selection-end-column="81" />
+            <state relative-caret-position="352">
+              <caret line="63" column="133" lean-forward="false" selection-start-line="63" selection-start-column="133" selection-end-line="63" selection-end-column="133" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#td#10;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -112,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="synchronized.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="synchronized.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/synchronized.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="190">
-              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -125,8 +125,8 @@
       <file leaf-file-name="mylibrary.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/mylibrary.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="60" column="29" lean-forward="true" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+            <state relative-caret-position="100">
+              <caret line="48" column="131" lean-forward="false" selection-start-line="48" selection-start-column="131" selection-end-line="48" selection-end-column="131" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -171,8 +171,10 @@
       <find>setRate</find>
       <find>permission</find>
       <find>rate</find>
-      <find>repo_list</find>
       <find>pub</find>
+      <find>repo_list</find>
+      <find>e</find>
+      <find>getAttribute</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -198,16 +200,16 @@
         <option value="$PROJECT_DIR$/seafWeb/templates/login.html" />
         <option value="$PROJECT_DIR$/seafWeb/static/bootstrap/css/bootstrap-table.css" />
         <option value="$PROJECT_DIR$/seafWeb/static/js/get-sync-progress.js" />
-        <option value="$PROJECT_DIR$/seafWeb/templates/jump.html" />
         <option value="$PROJECT_DIR$/seafWeb/templates/404.html" />
-        <option value="$PROJECT_DIR$/seafWeb/templates/repo/mylibrary.html" />
+        <option value="$PROJECT_DIR$/seafWeb/static/css/repo.css" />
         <option value="$PROJECT_DIR$/seafWeb/views.py" />
-        <option value="$PROJECT_DIR$/seafWeb/templates/repo/public.html" />
+        <option value="$PROJECT_DIR$/seafWeb/templates/jump.html" />
+        <option value="$PROJECT_DIR$/seafWeb/templates/homepage.html" />
+        <option value="$PROJECT_DIR$/seafWeb/templates/repo/mylibrary.html" />
         <option value="$PROJECT_DIR$/seafWeb/templates/repo/shared.html" />
+        <option value="$PROJECT_DIR$/seafWeb/templates/repo/public.html" />
         <option value="$PROJECT_DIR$/seafWeb/templates/repo/group.html" />
         <option value="$PROJECT_DIR$/seafWeb/templates/repo/synchronized.html" />
-        <option value="$PROJECT_DIR$/seafWeb/templates/homepage.html" />
-        <option value="$PROJECT_DIR$/seafWeb/static/css/repo.css" />
       </list>
     </option>
   </component>
@@ -827,14 +829,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seafWeb/templates/jump.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1068">
-          <caret line="63" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="89" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seafWeb/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -851,30 +845,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/seafWeb/static/css/repo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="136" column="16" lean-forward="true" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/seafWeb/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1168">
-          <caret line="138" column="13" lean-forward="true" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
+        <state relative-caret-position="412">
+          <caret line="114" column="42" lean-forward="false" selection-start-line="114" selection-start-column="42" selection-end-line="114" selection-end-column="42" />
           <folding>
             <element signature="e#15#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/seafWeb/templates/jump.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="57" column="49" lean-forward="true" selection-start-line="55" selection-start-column="39" selection-end-line="57" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/mylibrary.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="60" column="29" lean-forward="true" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+        <state relative-caret-position="100">
+          <caret line="48" column="131" lean-forward="false" selection-start-line="48" selection-start-column="131" selection-end-line="48" selection-end-column="131" />
           <folding>
             <element signature="n#style#0;n#div#0;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/seafWeb/templates/homepage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-722">
+          <caret line="86" column="60" lean-forward="true" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1527061081859" expanded="false" signature="763:773" ph="..." />
+            <marker date="1527061081859" expanded="false" signature="832:841" ph="..." />
+            <marker date="1527061081859" expanded="false" signature="879:885" ph=" " />
+            <marker date="1527061081859" expanded="false" signature="885:891" ph=" " />
+            <marker date="1527061081859" expanded="false" signature="891:897" ph=" " />
+            <marker date="1527061081859" expanded="false" signature="897:903" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/shared.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="42" column="48" lean-forward="true" selection-start-line="42" selection-start-column="48" selection-end-line="42" selection-end-column="48" />
+        <state relative-caret-position="-38">
+          <caret line="49" column="133" lean-forward="false" selection-start-line="49" selection-start-column="133" selection-end-line="49" selection-end-column="133" />
           <folding>
             <element signature="n#style#0;n#div#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -883,8 +910,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/public.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="168" column="34" lean-forward="true" selection-start-line="79" selection-start-column="20" selection-end-line="168" selection-end-column="34" />
+        <state relative-caret-position="186">
+          <caret line="50" column="134" lean-forward="false" selection-start-line="50" selection-start-column="134" selection-end-line="50" selection-end-column="134" />
           <folding>
             <element signature="n#style#0;n#div#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -893,8 +920,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/group.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="63" column="81" lean-forward="false" selection-start-line="63" selection-start-column="81" selection-end-line="63" selection-end-column="81" />
+        <state relative-caret-position="352">
+          <caret line="63" column="133" lean-forward="false" selection-start-line="63" selection-start-column="133" selection-end-line="63" selection-end-column="133" />
           <folding>
             <element signature="n#style#0;n#div#0;n#td#10;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -904,32 +931,7 @@
     <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/synchronized.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seafWeb/templates/homepage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="207" column="48" lean-forward="true" selection-start-line="207" selection-start-column="48" selection-end-line="207" selection-end-column="48" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1527046715875" expanded="false" signature="763:773" ph="..." />
-            <marker date="1527046715875" expanded="false" signature="832:841" ph="..." />
-            <marker date="1527046715875" expanded="false" signature="879:885" ph=" " />
-            <marker date="1527046715875" expanded="false" signature="885:891" ph=" " />
-            <marker date="1527046715875" expanded="false" signature="891:897" ph=" " />
-            <marker date="1527046715875" expanded="false" signature="897:903" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seafWeb/static/css/repo.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="135" column="6" lean-forward="true" selection-start-line="135" selection-start-column="6" selection-end-line="135" selection-end-column="6" />
+          <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
           <folding />
         </state>
       </provider>

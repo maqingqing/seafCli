@@ -113,8 +113,6 @@ def get_repo(request):
             sync_status = new_sync[r.get('id')]
 
         ctx['repo_id'].append(r.get('id'))
-        print 33333333333333333333333333333333
-        print r.get('type')
 
         if r.get('type') == 'repo':
             ctx['repo_list'].append({'name': r.get('name'),

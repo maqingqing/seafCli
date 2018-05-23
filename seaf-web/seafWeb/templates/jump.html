@@ -21,7 +21,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                                         </button>
-                                        <button type="button" class="btn btn-primary syncSub" data-dismiss="modal">
+                                        <button type="button" class="btn btn-primary syncSub" data-url="/sync" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" data-dismiss="modal" onclick="sync(this)">
                                             提交
                                         </button>
                                     </div>
@@ -53,7 +53,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                                         </button>
-                                        <button type="button" class="btn btn-primary syncSub" data-dismiss="modal">
+                                        <button type="button" class="btn btn-primary syncSub" data-url="/sync" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" data-dismiss="modal" onclick="sync(this)">
                                             提交
                                         </button>
                                     </div>
@@ -81,7 +81,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消
                                             </button>
-                                            <button type="button" class="btn btn-primary desyncSub" data-dismiss="modal">
+                                            <button type="button" class="btn btn-primary desyncSub" data-dismiss="modal" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="desync(this)">
                                                 确定
                                             </button>
                                         </div>

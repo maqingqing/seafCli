@@ -41,12 +41,12 @@
                 {% if repo.sync_status == 'unsync' %}
                 <td> {{ repo.sync_status }}</td>
                 <td>
-                    <input class="optionBtn" type="button" value="sync" data-url="/sync" data-toggle="modal" data-target="#{{ repo.name }}" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" />
-                    <input class="optionBtn" type="button" value="pull" data-url="/repo/download" data-toggle="modal" data-target="#{{ repo.name }}pull" data-repoid="{{ repo.id }}"/>
+                    <input class="optionBtn" type="button" value="sync" data-toggle="modal" data-target="#{{ repo.name }}"/>
+                    <input class="optionBtn" type="button" value="pull"  data-toggle="modal" data-target="#{{ repo.name }}pull" />
                 </td>
                 {% elif repo.sync_status == 'synchronized' %}
                 <td>{{ repo.sync_status }}</td>
-                <td> <input class="optionBtn" data-toggle="modal" data-target="#{{ repo.name }}desync" type="button" value="desync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}"/></td>
+                <td> <input class="optionBtn" data-toggle="modal" data-target="#{{ repo.name }}desync" type="button" value="desync"/></td>
 
 
                 {% else %}
@@ -60,7 +60,6 @@
                             progress('{{ repo.id }}');
                     </script>
                 </td>
-                    {% include 'jump.html' %}
 
                 {% endif %}
 

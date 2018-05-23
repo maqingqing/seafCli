@@ -42,12 +42,12 @@
                 {% if repo.sync_status == 'unsync' %}
                 <td> {{ repo.sync_status }}</td>
                 <td>
-                    <input class="optionBtn" type="button" value="sync" data-url="/sync" data-toggle="modal" data-target="#sh{{ repo.name }}" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" />
-                    <input class="optionBtn" type="button" value="pull" data-url="/repo/download" data-toggle="modal" data-target="#sh{{ repo.name }}pull" data-repoid="{{ repo.id }}"/>
+                    <input class="optionBtn" type="button" value="sync" data-toggle="modal" data-target="#sh{{ repo.name }}"  />
+                    <input class="optionBtn" type="button" value="pull" data-toggle="modal" data-target="#sh{{ repo.name }}pull" />
                 </td>
                 {% elif repo.sync_status == 'synchronized' %}
                 <td>{{ repo.sync_status }}</td>
-                <td> <input class="optionBtn" data-toggle="modal" data-target="#sh{{ repo.name }}desync" type="button" value="desync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}"/></td>
+                <td> <input class="optionBtn" data-toggle="modal" data-target="#sh{{ repo.name }}desync" type="button" value="desync"/></td>
 
                 {% else %}
                 <td>{{ repo.sync_status }}</td>
@@ -99,7 +99,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                                         </button>
-                                        <button type="button" class="btn btn-primary syncSub" data-dismiss="modal">
+                                         <button type="button" class="btn btn-primary syncSub" data-url="/sync" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" data-dismiss="modal" onclick="sync(this)">
                                             提交
                                         </button>
                                     </div>
@@ -131,7 +131,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                                         </button>
-                                        <button type="button" class="btn btn-primary syncSub" data-dismiss="modal">
+                                         <button type="button" class="btn btn-primary syncSub" data-url="/sync" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" data-dismiss="modal" onclick="sync(this)">
                                             提交
                                         </button>
                                     </div>
@@ -159,7 +159,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消
                                             </button>
-                                            <button type="button" class="btn btn-primary desyncSub" data-dismiss="modal">
+                                            <button type="button" class="btn btn-primary desyncSub" data-dismiss="modal" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="desync(this)">
                                                 确定
                                             </button>
                                         </div>
