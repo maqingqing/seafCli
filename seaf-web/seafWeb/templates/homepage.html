@@ -16,12 +16,12 @@
 <body>
 
 
-    <div id="rate" style="width:100%" align="right">
-        <span id="upload_rate" style="width:50%">upload: 0.0 KB/s</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <span id="download_rate">download: 0.0 KB/s</span>
-	</div>
-    <div  class="" title="{{ username }},welcome use seafile...." style="width:auto;height:auto;" data-options="footer:'#rate'">
+{#    <div id="rate" style="width:100%" align="right">#}
+{#        <span id="upload_rate" style="width:50%">upload: 0.0 KB/s</span>#}
+{#        &nbsp;&nbsp;&nbsp;&nbsp;#}
+{#        <span id="download_rate">download: 0.0 KB/s</span>#}
+{#	</div>#}
+    <div  class=""style="width:auto;height:auto;">
         <section class="reposHead">
             <div class="logoImg">
                 <img src="../static/img/mylogo.png" alt="">
@@ -84,17 +84,15 @@
 
                             {% if repo.sync_status == 'unsync' %}
 {#                                如果资料库状态是未同步，则显示同步和下载按钮#}
-                            <td> {{ repo.sync_status }}
-
-                            </td>
+                            <td> {{ repo.sync_status }}</td>
                             <td>
-                                <input class="optionBtn" type="button" value="sync" data-url="/sync" data-toggle="modal" data-target="#{{ repo.name }}" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" onclick="sync(this)" />
-                                <input class="optionBtn" type="button" value="pull" data-url="/repo/download" data-toggle="modal" data-target="#{{ repo.name }}" data-repoid="{{ repo.id }}" onclick="sync(this)"/>
+                                <input class="optionBtn" type="button" value="sync" data-url="/sync" data-toggle="modal" data-target="#{{ repo.name }}" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" />
+                                <input class="optionBtn" type="button" value="pull" data-url="/repo/download" data-toggle="modal" data-target="#{{ repo.name }}pull" data-repoid="{{ repo.id }}"/>
                             </td>
                             {% elif repo.sync_status == 'synchronized' %}
 {#                                如果资料库显示已同步，则显示需晓同步按钮#}
                             <td>{{ repo.sync_status }}</td>
-                            <td> <input class="optionBtn" data-toggle="modal" data-target="#{{ repo.name }}desync" type="button" value="desync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}""/></td>
+                            <td> <input class="optionBtn" data-toggle="modal" data-target="#{{ repo.name }}desync" type="button" value="desync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}"/></td>
 
                             {% else %}
 {#                                除此之外应该是在同步过程中。则显示同步速度和进度#}
@@ -121,63 +119,8 @@
                                 </td>
                             {% endif %}
                         </tr>
-{#                            同步操作模态框#}
 
-                        <div id="{{ repo.name }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                            &times;
-                                        </button>
-                                        <h4 class="modal-title" id="myModalLabel">
-                                            请输入同步路径
-                                        </h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <span>同步路径</span>
-                                        <input type="text" class="sync_path" placeholder="/home/paladin/">
-                                        {% if repo.encrypted == 1 %}
-
-                                            <span>密码</span>
-                                            <input type="password" class="sync_pass">
-                                        {% endif %}
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                                        </button>
-                                        <button type="button" class="btn btn-primary syncSub" data-dismiss="modal">
-                                            提交
-                                        </button>
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal -->
-                        </div>
-{#                        取消同步模态框#}
-                            <div id="{{ repo.name }}desync" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                &times;
-                                            </button>
-                                            <h4 class="modal-title" id="myModalLabel">
-                                                取消同步
-                                            </h4>
-                                        </div>
-                                        <div class="modal-body">
-                                           资料库{{ repo.name }}取消同步
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
-                                            </button>
-                                            <button type="button" class="btn btn-primary desyncSub" data-dismiss="modal">
-                                                确定
-                                            </button>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal -->
-                            </div>
+                            {% include 'jump.html' %}
 
                         {% endfor %}
                      </tbody>
@@ -203,23 +146,34 @@
 
     $(function(){
         $('.tabs-header.tabs-header-left').addClass('col-md-2');
-    $('.tabs-panels.tabs-panels-right').addClass('col-md-10');
+        $('.tabs-panels.tabs-panels-right').addClass('col-md-10');
+        $('.tabs-panels.tabs-panels-right').addClass('col-md-offset-2');
     });
 
-    function download(e) {
-        var download_dir = prompt("请输入路径:");
-        var passwd;
+    $('.syncSub').click(function(){
+        var btnId = '#'+$(this).parents('.modal').attr('id');
+        var reqUrl = $("[data-target='"+btnId+"']").attr('data-url');
+        var e = $("[data-target='"+btnId+"']")[0];
 
-        $.post("/repo/download",{'repo_id':e.getAttribute('data-repoid'), 'download_dir': download_dir, 'passwd': passwd},function(data){
+        var passwd;
+        var sync_path;
+        //获取对应的同步路径
+        sync_path = $(this).parent().siblings('.modal-body').children('.sync_path').val();
+        if($(this).parent().siblings('.modal-body').children('.sync_pass')){
+            passwd = $(this).parent().siblings('.modal-body').children('.sync_pass').val();
+        }
+        console.log(e,reqUrl,sync_path,passwd);
+        syncAjax(e,reqUrl,sync_path,passwd);
+    });
+    function syncAjax(e,url,sync_path,passwd){
+        $.post(url,{'repo_id':e.getAttribute('data-repoid'), 'path': sync_path, 'passwd': passwd},function(data){
+            console.log(data);
             if (data.state == 1){
-                 $.messager.alert('提示', "资料库正在下载在" + download_dir +",并绑定同步", 'info', function() {
-                        refreshTab();
-                });
+                refreshTab();
             }else if(data.state == -1){
-                passwd = prompt("请输入密码:");
-                $.post("/repo/download",{'repo_id':e.getAttribute('data-repoid'), 'download_dir': download_dir, 'passwd': passwd},function(data){
-                    if (data.state == 1){
-                        $.messager.alert('提示', "资料库正在下载在" + download_dir +",并绑定同步", 'info', function() {
+                $.post("/sync",{'repo_id':e.getAttribute('data-repoid'), 'path': sync_path, 'passwd': passwd},function(data){
+                    if(data.state == 1){
+                        $.messager.alert('提示', sync_path + "正在于" + e.getAttribute('data-reponame') +"绑定同步", 'info', function() {
                             refreshTab();
                         });
                     }else {
@@ -229,45 +183,6 @@
                 alert("Failed\n" + data.res);
             }
         });
-    }
-
-    function sync(e){
-        var passwd;
-        var sync_path;
-        var reqUrl = $(e).attr('data-url');
-        $('.syncSub').click(function(e){
-            //获取对应的同步路径
-            sync_path = $(this).parent().siblings('.modal-body').children('.sync_path').val();
-            console.log(sync_path);
-            if($(this).parent().siblings('.modal-body').children('.sync_pass')){
-                passwd = $(this).parent().siblings('.modal-body').children('.sync_pass').val();
-            }
-            syncAjax(reqUrl);
-        });
-        function syncAjax(url){
-            $.post(url,{'repo_id':e.getAttribute('data-repoid'), 'path': sync_path, 'passwd': passwd},function(data){
-                console.log(data);
-                if (data.state == 1){
-{#                    $.messager.alert('提示', sync_path + "正在于" + e.getAttribute('data-reponame') +"绑定同步", 'info', function() {#}
-{#                        //window.parent.location.reload(true);#}
-                        refreshTab();
-{#                    });#}
-                }else if(data.state == -1){
-{#                    passwd = prompt("请输入密码:");#}
-                    $.post("/sync",{'repo_id':e.getAttribute('data-repoid'), 'path': sync_path, 'passwd': passwd},function(data){
-                        if(data.state == 1){
-                            $.messager.alert('提示', sync_path + "正在于" + e.getAttribute('data-reponame') +"绑定同步", 'info', function() {
-                                //window.parent.location.reload(true);
-                                refreshTab();
-                            });
-                        }else {
-                            alert("Failed\n" + data.res);
-                        }});
-                }else {
-                    alert("Failed\n" + data.res);
-                }
-            });
-        }
     }
 
 
@@ -287,11 +202,7 @@
         repo_id = e.getAttribute('data-repoid')
         $.get("/cancel?repoid="+ repo_id,function(data){
                 if(data.state == 1){
-{#                    $.messager.alert('提示',  "已取消同步", 'info', function() {#}
-                        //window.parent.location.reload(true);
-                        refreshTab();
-
-{#                    });#}
+                    refreshTab();
                 }
                 else{
                     alert("Failed\n" + data.res)
@@ -304,8 +215,6 @@
     function addLibrary(e) {
         alert("please wait")
     }
-
-
 
 
 

@@ -4,79 +4,9 @@
 <head>
 <meta charset="utf-8">
 <title>欢迎使用seafile</title>
-<script src="../static/jquery-3.2.1.min.js"></script>
+<script src="../../static/jQuery-2.2.0.min.js"></script>
 </head>
 <body>
-    <div>
-       <table>
-            <tr>
-                <th></th>
-                <th>Library Name</th>
-                <th>Size</th>
-                <th>Last Update</th>
-                <th>Group</th>
-                <th>Permission</th>
-                <th>Sync Status</th>
-                <th></th>
-                <th>Local Path</th>
-            </tr>
-            {% for group, repos in repo_group_list.items %}
-              <tr>
-                  <td>
-                      <p> #{{ group }}</p>
-                  </td>
-              </tr>
-              {% for repo in repos %}
-            <tr>
-                <td>
-                    {% if repo.encrypted == 1 %}
-                    <img src="../static/img/sync-folder-encrypt-20.png">
-                    {% else %}
-                    <img src="../static/img/sync-folder-20.png">
-                    {% endif %}
-                </td>
-                <td>
-                    <a href="/repo/file_list?repo_id={{ repo.id }}">{{ repo.name }}</a>
-                </td>
-                <td> {{ repo.size }}</td>
-                <td> {{ repo.time }}</td>
-                <td> {{ repo.group_name }}</td>
-                <td> {{ repo.permission }}</td>
-
-                {% if repo.sync_status == 'unsync' %}
-                <td> {{ repo.sync_status }}</td>
-                <td>
-                    <input type="button" value="sync" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" onclick="sync(this)" />
-                    <input type="button" value="pull" data-repoid="{{ repo.id }}" onclick="download(this)">
-                </td>
-                {% elif repo.sync_status == 'synchronized' %}
-                <td>{{ repo.sync_status }}</td>
-                <td> <input type="button" value="desync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="desync(this)" /></td>
-                {% else %}
-                <td>{{ repo.sync_status }}</td>
-                <td> <input type="button" value="cancel-sync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="cancel(this)" /></td>
-                <td style="width:auto">
-                    <div class="easyui-progressbar" data-options="value:0" style="width:100px;float:left" data-progressname="{{ repo.id }}"></div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>download: 0.0 KB/s</span>
-                    <script type="text/javascript" async="async">
-                            progress('{{ repo.id }}');
-                    </script>
-                </td>
-                {% endif %}
-
-
-                {% if repo.sync_path %}
-                <td>
-                    <a href="file://{{ repo.sync_path }}">{{ repo.sync_path }}</a>
-                </td>
-                {% endif%}
-            </tr>
-              {% endfor %}
-            {% endfor %}
-            </table>
-    </div>
-
 
 <div class="table-responsive">
         <table class="table">
@@ -98,7 +28,15 @@
               <tr>
                   <td>
                       <p> #{{ group }}</p>
+                      
                   </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                <td></td>
               </tr>
               {% for repo in repos %}
             <tr>
@@ -108,8 +46,6 @@
                     {% else %}
                     <img src="../static/img/sync-folder-20.png">
                     {% endif %}
-                </td>
-                <td>
                     <a href="/repo/file_list?repo_id={{ repo.id }}">{{ repo.name }}</a>
                 </td>
                 <td> {{ repo.size }}</td>
@@ -120,19 +56,20 @@
                 {% if repo.sync_status == 'unsync' %}
                 <td> {{ repo.sync_status }}</td>
                 <td>
-                    <input class="optionBtn" type="button" value="sync" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" onclick="sync(this)" />
-                    <input class="optionBtn" type="button" value="pull" data-repoid="{{ repo.id }}" onclick="download(this)">
+                    <input class="optionBtn" type="button" value="sync" data-url="/sync" data-toggle="modal" data-target="#g{{ repo.name }}" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" />
+                    <input class="optionBtn" type="button" value="pull" data-url="/repo/download" data-toggle="modal" data-target="#g{{ repo.name }}pull" data-repoid="{{ repo.id }}"/>
                 </td>
                 {% elif repo.sync_status == 'synchronized' %}
                 <td>{{ repo.sync_status }}</td>
-                <td> <input class="optionBtn" type="button" value="desync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="desync(this)" /></td>
+                <td> <input class="optionBtn" data-toggle="modal" data-target="#g{{ repo.name }}desync" type="button" value="desync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}"/></td>
+
                 {% else %}
                 <td>{{ repo.sync_status }}</td>
-                <td> <input class="optionBtn" type="button" value="cancel-sync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="cancel(this)" /></td>
-                <td style="width:auto">
-                    <div class="easyui-progressbar" data-options="value:0" style="width:100px;float:left" data-progressname="{{ repo.id }}"></div>
+                <td>
+                    <input class="optionBtn" type="button" value="cancel-sync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="cancel(this)" />
+                    <div class="easyui-progressbar" data-options="value:0" style="width:50px;float:left" data-progressname="{{ repo.id }}"></div>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>download: 0.0 KB/s</span>
+                    <span>0.0 KB/s</span>
                     <script type="text/javascript" async="async">
                             progress('{{ repo.id }}');
                     </script>
@@ -150,6 +87,99 @@
                     </td>
                 {% endif%}
             </tr>
+
+{#                  {% include 'jump.html' %}#}
+
+                  <div id="g{{ repo.name }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel1">
+                                            请输入同步路径
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <span>同步路径</span>
+                                        <input type="text" class="sync_path" placeholder="/home/paladin/">
+                                        {% if repo.encrypted == 1 %}
+
+                                            <span>密码</span>
+                                            <input type="password" class="sync_pass">
+                                        {% endif %}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                        </button>
+                                        <button type="button" class="btn btn-primary syncSub" data-dismiss="modal">
+                                            提交
+                                        </button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal -->
+                        </div>
+
+
+                            <div id="g{{ repo.name }}pull" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel1">
+                                            请输入同步路径
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <span>同步路径</span>
+                                        <input type="text" class="sync_path" placeholder="/home/paladin/">
+                                        {% if repo.encrypted == 1 %}
+
+                                            <span>密码</span>
+                                            <input type="password" class="sync_pass">
+                                        {% endif %}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                        </button>
+                                        <button type="button" class="btn btn-primary syncSub" data-dismiss="modal">
+                                            提交
+                                        </button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal -->
+                        </div>
+
+
+
+{#                        取消同步模态框#}
+                            <div id="g{{ repo.name }}desync" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel2">
+                                                取消同步
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                           资料库{{ repo.name }}取消同步
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                            <button type="button" class="btn btn-primary desyncSub" data-dismiss="modal">
+                                                确定
+                                            </button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
               {% endfor %}
             {% endfor %}
             </tbody>

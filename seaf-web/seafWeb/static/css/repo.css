@@ -91,8 +91,9 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFF5FF,endColorstr=#E0ECFF,GradientType=0);
 }
 
-.tabs li a.tabs-inner {
+.tabs-header-left .tabs li a.tabs-inner {
     border:none;
+    text-align: center;
 }
 
 .tabs-header-left .tabs li.tabs-selected a.tabs-inner {
@@ -104,10 +105,18 @@
      color: #333333;
 }
 
-@media (min-width: 992px) {
+/*@media (min-width: 992px) {*/
     .col-md-10 {
         width: 83.33333333% !important;
     }
+    .col-md-2 {
+        width: 16.66666667% !important;
+        padding-right:0;
+    }
+/*}*/
+
+.tabs-wrap,.tabs-header-left .tabs,.panel-body{
+    width:100% !important;
 }
 
 /*同步等各类按钮的样式*/
@@ -120,4 +129,20 @@
     border-radius: 4px;
     float: left;
     margin-right: 4px;
+}
+.panel{
+    overflow: visible;
+}
+.tabs{
+    border:none;
+}
+.tabs-header.tabs-header-left.col-md-2{
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+}
+.row{
+    margin:0;
 }

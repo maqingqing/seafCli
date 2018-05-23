@@ -80,7 +80,7 @@ def error(request):
 
 
 def get_repo(request):
-    ctx = {'repo_list': [],'repo_id': [], 'repo_share_list':[], 'repo_share_all_list':[], 'repo_group_list':{}, 'repo_sync_list': []}
+    ctx = {'repo_list': [], 'repo_id': [], 'repo_share_list': [], 'repo_share_all_list': [], 'repo_group_list': {}, 'repo_sync_list': []}
 
     serveraddr = request.session.get('serveraddr')
     token = request.session.get('token')
@@ -113,6 +113,8 @@ def get_repo(request):
             sync_status = new_sync[r.get('id')]
 
         ctx['repo_id'].append(r.get('id'))
+        print 33333333333333333333333333333333
+        print r.get('type')
 
         if r.get('type') == 'repo':
             ctx['repo_list'].append({'name': r.get('name'),
@@ -134,7 +136,8 @@ def get_repo(request):
                                            'owner': r.get('owner'),
                                            'permission': r.get('permission')})
 
-        else: # group repo
+        else:
+            # group repo
             if r.get('share_type') == 'public':
                 ctx['repo_share_all_list'].append({'name': r.get('name'),
                                                'id': r.get('id'),
@@ -162,6 +165,7 @@ def get_repo(request):
     server_addr_split = request.session.get('serveraddr').split('//')[1].split(':')[0]
     ctx['serveraddr'] = server_addr_split
     page = request.GET.get('page', None)
+
     if page:
         return render_to_response("repo/" + page.lower() + ".html", ctx)
     return render_to_response("homepage.html", ctx)
@@ -189,7 +193,7 @@ def download_repo(request):
     serveraddr = request.session.get('serveraddr')
 
     repo_id = request.POST.get('repo_id')
-    download_dir = request.POST.get('download_dir')
+    download_dir = request.POST.get('path')
     passwd = request.POST.get('passwd')
 
     if not download_dir:

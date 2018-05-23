@@ -1,83 +1,4 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>欢迎使用seafile</title>
-<script src="../../static/jQuery-2.2.0.min.js"></script>
-</head>
-<body>
-
-
-    <div class="table-responsive">
-        <table class="table">
-            <caption>公共资料库</caption>
-            <thead>
-                <tr>
-                     <th>Library Name</th>
-                    <th>Size</th>
-                    <th>Last Update</th>
-                    <th>From</th>
-                    <th>Permission</th>
-                    <th>Sync Status</th>
-                    <th>Option</th>
-                    <th>Local Path</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for repo in repo_share_all_list %}
-            <tr>
-                <td>
-                    {% if repo.encrypted == 1 %}
-                    <img src="../static/img/sync-folder-encrypt-20.png">
-                    {% else %}
-                    <img src="../static/img/sync-folder-20.png">
-                    {% endif %}
-                    <a href="/repo/file_list?repo_id={{ repo.id }}">{{ repo.name }}</a>
-                </td>
-                <td> {{ repo.size }}</td>
-                <td> {{ repo.time }}</td>
-                <td> {{ repo.owner }}</td>
-                <td> {{ repo.permission }}</td>
-
-                {% if repo.sync_status == 'unsync' %}
-                <td> {{ repo.sync_status }}</td>
-                <td>
-                    <input class="optionBtn" type="button" value="sync" data-url="/sync" data-toggle="modal" data-target="#pub{{ repo.name }}" data-repoid="{{ repo.id }}"  data-reponame="{{ repo.name }}" />
-                    <input class="optionBtn" type="button" value="pull" data-url="/repo/download" data-toggle="modal" data-target="#pub{{ repo.name }}pull" data-repoid="{{ repo.id }}"/>
-                </td>
-                {% elif repo.sync_status == 'synchronized' %}
-                <td>{{ repo.sync_status }}</td>
-                <td> <input class="optionBtn" data-toggle="modal" data-target="#pub{{ repo.name }}desync" type="button" value="desync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}"/></td>
-
-                {% else %}
-                <td>{{ repo.sync_status }}</td>
-                <td>
-                    <input class="optionBtn" type="button" value="cancel-sync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="cancel(this)" />
-                    <div class="easyui-progressbar" data-options="value:0" style="width:50px;float:left" data-progressname="{{ repo.id }}"></div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>0.0 KB/s</span>
-                    <script type="text/javascript" async="async">
-                            progress('{{ repo.id }}');
-                    </script>
-                </td>
-
-                {% endif %}
-
-
-                {% if repo.sync_path %}
-                <td>
-                    <a href="file://{{ repo.sync_path }}">{{ repo.sync_path }}</a>
-                </td>
-                {% else %}
-                    <td>
-                        <a href="#">none</a>
-                    </td>
-                {% endif %}
-            </tr>
-{#            {% include 'jump.html' %}#}
-
-                    <div id="pub{{ repo.name }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="{{ repo.name }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -109,7 +30,7 @@
                         </div>
 
 
-                            <div id="pub{{ repo.name }}pull" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div id="{{ repo.name }}pull" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -143,7 +64,7 @@
 
 
 {#                        取消同步模态框#}
-                            <div id="pub{{ repo.name }}desync" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div id="{{ repo.name }}desync" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -167,11 +88,3 @@
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal -->
                             </div>
-
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-</body>
-</html>
