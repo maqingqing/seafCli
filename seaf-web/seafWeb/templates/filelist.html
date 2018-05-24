@@ -4,11 +4,23 @@
 <head>
 <meta charset="utf-8">
 <title>欢迎使用seafile</title>
-<script src="../static/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../static/themes/default/easyui.css">
+<script src="../static/jQuery-2.2.0.min.js"></script>
+{#<script src="../../static/js/jquery.fileupload.js"></script>#}
+{#<script src="../../static/js/jquery.fileupload-process.js"></script>#}
+{#<script src="../../static/js/jquery.fileupload-validate.js"></script>#}
+<script type="text/javascript" src="../static/jquery.easyui.min.js"></script>
 </head>
+
 <body>
     <div>
         <a href="/repo">myLibrary</a>
+        <form id="uploadForm" action="post" enctype="multipart/form-data">
+            <input id="file_upload" type="file" name="file" data-dir="{{ parent_dir }}" data-repoid="{{ repo_id }}" onchange="fileChange(this)">
+            <br><span style="color: red" id="fileTypeError"></span>
+        </form>
+        <div id="time"></div>
+        <div id="progressNumber" class="easyui-progressbar" data-options="value:0" style="width:400px"></div>
 
         <table>
             <tr>
@@ -40,7 +52,9 @@
                 <td> {{ file.mtime }}</td>
                 <td> {{ file.permission }}</td>
                 <td>
-                    <img src="../static/img/download.png" data-filename="{{ parent_dir }}/{{ file.name }}" data-repoid="{{ repo_id }}" onclick="download(this)">
+                    <img src="../static/img/download.png" data-filename="{{ parent_dir }}/{{ file.name }}" data-repoid="{{ repo_id }}" data-filetype="{{ file.type }}" onclick="download(this)">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="../static/img/delete1.png" data-filename="{{ parent_dir }}/{{ file.name }}" data-repoid="{{ repo_id }}" data-filetype="{{ file.type }}" onclick="deleteFile(this)">
                 </td>
             </tr>
             {% endfor %}
@@ -50,9 +64,114 @@
 </body>
 <script type="text/javascript">
 
+    function fileChange(e){
+        $("#fileTypeError").html('');
+        var fileName = $('#file_upload').val();　　　　　　　　　　　　　　　　　　//获得文件名称
+
+        var repo_id = e.getAttribute('data-repoid');
+        var current_dir = e.getAttribute('data-dir');
+        console.log(current_dir);
+
+        $.get("/repo/file_list/upload",{'repo_id': repo_id, 'path': current_dir},function(data){
+               if(data.state == 1){
+                    console.log(data.url);
+                    var formData = new FormData($('#uploadForm')[0]);
+                    formData.append("filename", fileName);
+                    formData.append("parent_dir", current_dir);
+                    $.ajax({
+                        url: data.url,　　　　　　　　　　//上传地址
+                        type: 'POST',
+                        cache: false,　　
+                        data: formData,　　　　　　　　　　　　　//表单数据
+                        processData: false,
+                        contentType: false,
+                        xhr: function(){ //这是关键 获取原生的xhr对象 做以前做的所有事情
+                            var xhr = jQuery.ajaxSettings.xhr();
+                            xhr.upload.onloadstart = function(){//上传开始执行方法
+                                ot = new Date().getTime();   //设置上传开始时间
+                                oloaded = 0;//设置上传开始时，以上传的文件大小为0
+                            };
+                            if(xhr.upload){
+                                xhr.upload.onprogress = progressFunction;
+                            }
+
+                            return xhr;
+                        },
+
+                    }).done(function(resp) {
+                         window.parent.location.reload(true)
+                    }).fail(function(err) {
+                        alert('无法连接服务器！')
+                    });
+               }
+        })
+
+
+    }
+
+     function progressFunction(evt) {
+
+             //var progressBar = document.getElementById("progressBar");
+             //var percentageDiv = document.getElementById("percentage");
+             // event.total是需要传输的总字节，event.loaded是已经传输的字节。如果event.lengthComputable不为真，则event.total等于0
+             if (evt.lengthComputable) {//
+                 var percentComplete = Math.round(evt.loaded / evt.total * 100);
+                 $("#progressNumber").progressbar('setValue', percentComplete);
+                 if(percentComplete == 100){
+                    $("#progressNumber").progressbar('setValue', "%saving");
+                    time.innerHTML = '';
+                    return;
+                 }
+
+             }
+
+            var time = document.getElementById("time");
+            var nt = new Date().getTime();//获取当前时间
+
+            var pertime = (nt-ot)/1000; //计算出上次调用该方法时到现在的时间差，单位为s
+            ot = new Date().getTime(); //重新赋值时间，用于下次计算
+
+            var perload = evt.loaded - oloaded; //计算该分段上传的文件大小，单位b
+            oloaded = evt.loaded;//重新赋值已上传文件大小，用以下次计算
+
+            //上传速度计算
+            var speed = perload/pertime;//单位b/s
+            var bspeed = speed;
+            var units = 'b/s';//单位名称
+            if(speed/1024>1){
+                speed = speed/1024;
+                units = 'k/s';
+            }
+            if(speed/1024>1){
+                speed = speed/1024;
+                units = 'M/s';
+            }
+            speed = speed.toFixed(1);
+            //剩余时间
+            var resttime = ((evt.total-evt.loaded)/bspeed).toFixed(1);
+            time.innerHTML = '，速度：'+speed+units+'，剩余时间：'+resttime+'s';
+               if(bspeed==0)
+                time.innerHTML = '上传已取消';
+        }
+
+
+    function get_upload_link(repo_id,current_dir){
+
+        $.get("/repo/file_list/upload",{'repo_id': repo_id, 'path': current_dir},function(data){
+               if(data.state == 1){
+                    console.log(data.url)
+                    return data.url;
+               }
+        })
+
+
+    }
+
+
     function download(e){
 
-        $.get("/repo/file_list/download",{'repo_id': e.getAttribute('data-repoid'), 'file_name': e.getAttribute('data-filename')},function(data){
+        $.get("/repo/file_list/download",{'repo_id': e.getAttribute('data-repoid'), 'file_name': e.getAttribute('data-filename'),
+                                            'file_type': e.getAttribute('data-filetype')},function(data){
                if(data.state == 1){
                     var $eleForm = $("<form method='get'></form>");
                     $eleForm.attr("action",data.download_url);
@@ -62,6 +181,21 @@
                }
         })
 
+
+    }
+
+    function deleteFile(e){
+
+        var delete_url = "/repo/file_list/download?" + "repo_id=" + e.getAttribute('data-repoid')
+                        + "&file_name=" + e.getAttribute('data-filename') + "&file_type=" + e.getAttribute('data-filetype');
+        $.ajax({
+              url: delete_url,
+              type: 'DELETE',
+              success: function (res) {
+                 window.parent.location.reload(true);
+            }
+
+         });
 
     }
 
@@ -93,5 +227,7 @@
 
         });
     }
+
+
 </script>
 </html>

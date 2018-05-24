@@ -18,8 +18,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="114" column="42" lean-forward="false" selection-start-line="114" selection-start-column="42" selection-end-line="114" selection-end-column="42" />
+            <state relative-caret-position="448">
+              <caret line="242" column="16" lean-forward="false" selection-start-line="242" selection-start-column="16" selection-end-line="242" selection-end-column="16" />
               <folding>
                 <element signature="e#15#51#0" expanded="true" />
               </folding>
@@ -27,50 +27,56 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="fileAPI.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/seafWeb/api/fileAPI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="32" column="70" lean-forward="true" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="homepage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/templates/homepage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-722">
-              <caret line="86" column="60" lean-forward="true" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
+            <state relative-caret-position="214">
+              <caret line="81" column="37" lean-forward="true" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1527061081859" expanded="false" signature="763:773" ph="..." />
-                <marker date="1527061081859" expanded="false" signature="832:841" ph="..." />
-                <marker date="1527061081859" expanded="false" signature="879:885" ph=" " />
-                <marker date="1527061081859" expanded="false" signature="885:891" ph=" " />
-                <marker date="1527061081859" expanded="false" signature="891:897" ph=" " />
-                <marker date="1527061081859" expanded="false" signature="897:903" ph=" " />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1527130647209" expanded="false" signature="763:773" ph="..." />
+                <marker date="1527130647209" expanded="false" signature="832:841" ph="..." />
+                <marker date="1527130647209" expanded="false" signature="879:885" ph=" " />
+                <marker date="1527130647209" expanded="false" signature="885:891" ph=" " />
+                <marker date="1527130647209" expanded="false" signature="891:897" ph=" " />
+                <marker date="1527130647209" expanded="false" signature="897:903" ph=" " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jump.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seafWeb/templates/jump.html">
+      <file leaf-file-name="filelist.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/seafWeb/templates/filelist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="57" column="49" lean-forward="true" selection-start-line="55" selection-start-column="39" selection-end-line="57" selection-end-column="49" />
-              <folding />
+            <state relative-caret-position="196">
+              <caret line="18" column="83" lean-forward="false" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="83" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#2324#2330#0#HTML" expanded="true" />
+                <element signature="e#2330#2336#0#HTML" expanded="true" />
+                <element signature="e#2336#2342#0#HTML" expanded="true" />
+                <element signature="e#2342#2348#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="repo.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seafWeb/static/css/repo.css">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/seafWeb/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="136" column="16" lean-forward="true" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seafWeb/templates/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="348">
+              <caret line="29" column="11" lean-forward="true" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -79,11 +85,9 @@
       <file leaf-file-name="shared.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/shared.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-38">
+            <state relative-caret-position="882">
               <caret line="49" column="133" lean-forward="false" selection-start-line="49" selection-start-column="133" selection-end-line="49" selection-end-column="133" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -91,11 +95,9 @@
       <file leaf-file-name="public.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/public.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
+            <state relative-caret-position="900">
               <caret line="50" column="134" lean-forward="false" selection-start-line="50" selection-start-column="134" selection-end-line="50" selection-end-column="134" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,20 +105,18 @@
       <file leaf-file-name="group.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/group.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
+            <state relative-caret-position="1134">
               <caret line="63" column="133" lean-forward="false" selection-start-line="63" selection-start-column="133" selection-end-line="63" selection-end-column="133" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#td#10;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="synchronized.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="synchronized.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/synchronized.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+            <state relative-caret-position="702">
+              <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -125,11 +125,9 @@
       <file leaf-file-name="mylibrary.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/mylibrary.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
+            <state relative-caret-position="864">
               <caret line="48" column="131" lean-forward="false" selection-start-line="48" selection-start-column="131" selection-end-line="48" selection-end-column="131" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -147,10 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>list_</find>
-      <find>seaf_list_remote</find>
-      <find>get_repo_list</find>
-      <find>repo</find>
       <find>user</find>
       <find>sync</find>
       <find>desync</find>
@@ -172,9 +166,15 @@
       <find>permission</find>
       <find>rate</find>
       <find>pub</find>
-      <find>repo_list</find>
       <find>e</find>
       <find>getAttribute</find>
+      <find>repo_list</find>
+      <find>CONF_DIR</find>
+      <find>path</find>
+      <find>fileChange</find>
+      <find>repo/file_list</find>
+      <find>data-dir</find>
+      <find>parent_dir</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -196,20 +196,23 @@
         <option value="$PROJECT_DIR$/seafWeb/static/css/index.css" />
         <option value="$PROJECT_DIR$/seafWeb/static/js/sync.js" />
         <option value="$PROJECT_DIR$/seafWeb/api/baseAPI.py" />
-        <option value="$PROJECT_DIR$/seafWeb/urls.py" />
         <option value="$PROJECT_DIR$/seafWeb/templates/login.html" />
         <option value="$PROJECT_DIR$/seafWeb/static/bootstrap/css/bootstrap-table.css" />
         <option value="$PROJECT_DIR$/seafWeb/static/js/get-sync-progress.js" />
         <option value="$PROJECT_DIR$/seafWeb/templates/404.html" />
         <option value="$PROJECT_DIR$/seafWeb/static/css/repo.css" />
-        <option value="$PROJECT_DIR$/seafWeb/views.py" />
         <option value="$PROJECT_DIR$/seafWeb/templates/jump.html" />
-        <option value="$PROJECT_DIR$/seafWeb/templates/homepage.html" />
         <option value="$PROJECT_DIR$/seafWeb/templates/repo/mylibrary.html" />
         <option value="$PROJECT_DIR$/seafWeb/templates/repo/shared.html" />
         <option value="$PROJECT_DIR$/seafWeb/templates/repo/public.html" />
         <option value="$PROJECT_DIR$/seafWeb/templates/repo/group.html" />
         <option value="$PROJECT_DIR$/seafWeb/templates/repo/synchronized.html" />
+        <option value="$PROJECT_DIR$/seafWeb/templates/repo/filelist.html" />
+        <option value="$PROJECT_DIR$/seafWeb/templates/homepage.html" />
+        <option value="$PROJECT_DIR$/seafWeb/views.py" />
+        <option value="$PROJECT_DIR$/seafWeb/templates/filelist.html" />
+        <option value="$PROJECT_DIR$/seafWeb/urls.py" />
+        <option value="$PROJECT_DIR$/seafWeb/api/fileAPI.py" />
       </list>
     </option>
   </component>
@@ -240,8 +243,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -300,28 +303,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="repo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seaf-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seaf-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seafWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -340,33 +321,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seaf-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seaf-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seafWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -383,13 +338,13 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/seafWeb/templates" />
-      <recent name="$PROJECT_DIR$/seafWeb/templates/repo" />
-      <recent name="$PROJECT_DIR$/templates" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/seafWeb/templates/repo" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/seafWeb/templates/repo" />
+      <recent name="$PROJECT_DIR$/seafWeb/templates" />
+      <recent name="$PROJECT_DIR$/templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -650,7 +605,7 @@
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17910448" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18131565" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -684,7 +639,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/login.html" />
     <entry file="file://$PROJECT_DIR$/seafcli/modle.py" />
     <entry file="file:///usr/lib64/python2.7/site-packages/seafile/rpcclient.py" />
     <entry file="file://$PROJECT_DIR$/seafcli/urls.py" />
@@ -692,13 +646,6 @@
     <entry file="file://$PROJECT_DIR$/seafcli/seafClient.py" />
     <entry file="file://$PROJECT_DIR$/templates/homepage.html" />
     <entry file="file://$PROJECT_DIR$/seafcli/views.py" />
-    <entry file="file://$PROJECT_DIR$/seafWeb/api/fileAPI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seafWeb/templates/homebase.html" />
     <entry file="file://$PROJECT_DIR$/templates/login.html" />
     <entry file="file://$PROJECT_DIR$/seafcli/urls.py" />
@@ -757,13 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seafWeb/templates/filelist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seafWeb/api/repoAPI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -784,9 +724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="24" />
-          <folding>
-            <element signature="n#!!doc;n#sync#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -829,14 +766,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seafWeb/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="28" column="30" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seafWeb/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="666">
@@ -845,21 +774,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seafWeb/static/css/repo.css">
+    <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/mylibrary.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="136" column="16" lean-forward="true" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="16" />
+        <state relative-caret-position="864">
+          <caret line="48" column="131" lean-forward="false" selection-start-line="48" selection-start-column="131" selection-end-line="48" selection-end-column="131" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seafWeb/views.py">
+    <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/shared.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="114" column="42" lean-forward="false" selection-start-line="114" selection-start-column="42" selection-end-line="114" selection-end-column="42" />
-          <folding>
-            <element signature="e#15#51#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="882">
+          <caret line="49" column="133" lean-forward="false" selection-start-line="49" selection-start-column="133" selection-end-line="49" selection-end-column="133" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/public.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="50" column="134" lean-forward="false" selection-start-line="50" selection-start-column="134" selection-end-line="50" selection-end-column="134" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/group.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1134">
+          <caret line="63" column="133" lean-forward="false" selection-start-line="63" selection-start-column="133" selection-end-line="63" selection-end-column="133" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/synchronized.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -871,67 +822,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/mylibrary.html">
+    <entry file="file://$PROJECT_DIR$/seafWeb/static/css/repo.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="48" column="131" lean-forward="false" selection-start-line="48" selection-start-column="131" selection-end-line="48" selection-end-column="131" />
+        <state relative-caret-position="366">
+          <caret line="136" column="16" lean-forward="true" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/filelist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seafWeb/templates/filelist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="18" column="83" lean-forward="false" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="83" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#2324#2330#0#HTML" expanded="true" />
+            <element signature="e#2330#2336#0#HTML" expanded="true" />
+            <element signature="e#2336#2342#0#HTML" expanded="true" />
+            <element signature="e#2342#2348#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seafWeb/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="29" column="11" lean-forward="true" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/seafWeb/templates/homepage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-722">
-          <caret line="86" column="60" lean-forward="true" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
+        <state relative-caret-position="214">
+          <caret line="81" column="37" lean-forward="true" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1527061081859" expanded="false" signature="763:773" ph="..." />
-            <marker date="1527061081859" expanded="false" signature="832:841" ph="..." />
-            <marker date="1527061081859" expanded="false" signature="879:885" ph=" " />
-            <marker date="1527061081859" expanded="false" signature="885:891" ph=" " />
-            <marker date="1527061081859" expanded="false" signature="891:897" ph=" " />
-            <marker date="1527061081859" expanded="false" signature="897:903" ph=" " />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1527130647209" expanded="false" signature="763:773" ph="..." />
+            <marker date="1527130647209" expanded="false" signature="832:841" ph="..." />
+            <marker date="1527130647209" expanded="false" signature="879:885" ph=" " />
+            <marker date="1527130647209" expanded="false" signature="885:891" ph=" " />
+            <marker date="1527130647209" expanded="false" signature="891:897" ph=" " />
+            <marker date="1527130647209" expanded="false" signature="897:903" ph=" " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/shared.html">
+    <entry file="file://$PROJECT_DIR$/seafWeb/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-38">
-          <caret line="49" column="133" lean-forward="false" selection-start-line="49" selection-start-column="133" selection-end-line="49" selection-end-column="133" />
+        <state relative-caret-position="448">
+          <caret line="242" column="16" lean-forward="false" selection-start-line="242" selection-start-column="16" selection-end-line="242" selection-end-column="16" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#15#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/public.html">
+    <entry file="file://$PROJECT_DIR$/seafWeb/api/fileAPI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="50" column="134" lean-forward="false" selection-start-line="50" selection-start-column="134" selection-end-line="50" selection-end-column="134" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/group.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="63" column="133" lean-forward="false" selection-start-line="63" selection-start-column="133" selection-end-line="63" selection-end-column="133" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#td#10;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seafWeb/templates/repo/synchronized.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+        <state relative-caret-position="238">
+          <caret line="32" column="70" lean-forward="true" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
           <folding />
         </state>
       </provider>

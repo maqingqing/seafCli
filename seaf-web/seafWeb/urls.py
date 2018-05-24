@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^repo$', views.get_repo),
     url(r'^repo/file_list$', views.get_file_list),
     url(r'^repo/file_list/download$', views.download_file),
+    url(r'^repo/file_list/upload$', views.upload_file),
     url(r'^repo/download$', views.download_repo),
     url(r'^repo/progress$', views.get_download_progress),
     url(r'^create', views.create_repo),

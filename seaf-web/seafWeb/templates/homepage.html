@@ -52,91 +52,92 @@
             </div>
         </section>
         <div id="library_tabs" class="easyui-tabs row" tabPosition="left" >
-		<div title="MyLibrary" data-options="">
-			<div class="table-responsive" >
-                <caption>我的资料库</caption>
-                <table class="table">
+            <div title="MyLibrary" data-options="">
+                <div class="table-responsive" >
+                    <caption>我的资料库</caption>
+                    <table class="table">
 
-                    <thead>
-                        <tr>
-                            <th>Library Name</th>
-                            <th>Size</th>
-                            <th>Last Update</th>
-                            <th>Sync Status</th>
-                            <th>Option</th>
-                            <th>Local Path</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                        <thead>
+                            <tr>
+                                <th>Library Name</th>
+                                <th>Size</th>
+                                <th>Last Update</th>
+                                <th>Sync Status</th>
+                                <th>Option</th>
+                                <th>Local Path</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                        {% for repo in repo_list %}
-                        <tr>
-                            <td>
-                                {% if repo.encrypted == 1 %}
-                                <img src="../static/img/sync-folder-encrypt-20.png">
-                                {% else %}
-                                <img src="../static/img/sync-folder-20.png">
-                                {% endif %}
-                                <a href="/repo/file_list?repo_id={{ repo.id }}">{{ repo.name }}</a>
-                            </td>
-                            <td> {{ repo.size }}</td>
-                            <td> {{ repo.time }}</td>
-
-                            {% if repo.sync_status == 'unsync' %}
-{#                                如果资料库状态是未同步，则显示同步和下载按钮#}
-                            <td> {{ repo.sync_status }}</td>
-                            <td>
-                                <input class="optionBtn" type="button" value="sync" data-toggle="modal" data-target="#{{ repo.name }}" />
-                                <input class="optionBtn" type="button" value="pull" data-toggle="modal" data-target="#{{ repo.name }}pull"/>
-                            </td>
-                            {% elif repo.sync_status == 'synchronized' %}
-{#                                如果资料库显示已同步，则显示需晓同步按钮#}
-                            <td>{{ repo.sync_status }}</td>
-                            <td> <input class="optionBtn" data-toggle="modal" data-target="#{{ repo.name }}desync" type="button" value="desync" /></td>
-
-                            {% else %}
-{#                                除此之外应该是在同步过程中。则显示同步速度和进度#}
-                            <td>{{ repo.sync_status }}</td>
-                            <td>
-                                <input class="optionBtn" type="button" value="cancel-sync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="cancel(this)" />
-                                <div class="easyui-progressbar" data-options="value:0" style="width:50px;float:left" data-progressname="{{ repo.id }}"></div>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <span>0.0 KB/s</span>
-                                <script type="text/javascript" async="async">
-                                        progress('{{ repo.id }}');
-                                </script>
-                            </td>
-
-                            {% endif %}
-
-                            {% if repo.sync_path %}
-                            <td>
-                                <a href="file://{{ repo.sync_path }}">{{ repo.sync_path }}</a>
-                            </td>
-                            {% else %}
+                            {% for repo in repo_list %}
+                            <tr>
                                 <td>
-                                    <a href="#">none</a>
+                                    {% if repo.encrypted == 1 %}
+                                    <img src="../static/img/sync-folder-encrypt-20.png">
+                                    {% else %}
+                                    <img src="../static/img/sync-folder-20.png">
+                                    {% endif %}
+{#                                    <div data-options="href : '/repo/file_list?repo_id={{ repo.id }}'" >{{ repo.name }}</div>#}
+                                    <a href="/repo/file_list?repo_id={{ repo.id }}">{{ repo.name }}</a>
                                 </td>
-                            {% endif %}
-                        </tr>
+                                <td> {{ repo.size }}</td>
+                                <td> {{ repo.time }}</td>
 
-                            {% include 'jump.html' %}
+                                {% if repo.sync_status == 'unsync' %}
+    {#                                如果资料库状态是未同步，则显示同步和下载按钮#}
+                                <td> {{ repo.sync_status }}</td>
+                                <td>
+                                    <input class="optionBtn" type="button" value="sync" data-toggle="modal" data-target="#{{ repo.name }}" />
+                                    <input class="optionBtn" type="button" value="pull" data-toggle="modal" data-target="#{{ repo.name }}pull"/>
+                                </td>
+                                {% elif repo.sync_status == 'synchronized' %}
+    {#                                如果资料库显示已同步，则显示需晓同步按钮#}
+                                <td>{{ repo.sync_status }}</td>
+                                <td> <input class="optionBtn" data-toggle="modal" data-target="#{{ repo.name }}desync" type="button" value="desync" /></td>
 
-                        {% endfor %}
-                     </tbody>
-                </table>
+                                {% else %}
+    {#                                除此之外应该是在同步过程中。则显示同步速度和进度#}
+                                <td>{{ repo.sync_status }}</td>
+                                <td>
+                                    <input class="optionBtn" type="button" value="cancel-sync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="cancel(this)" />
+                                    <div class="easyui-progressbar" data-options="value:0" style="width:50px;float:left" data-progressname="{{ repo.id }}"></div>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span>0.0 KB/s</span>
+                                    <script type="text/javascript" async="async">
+                                            progress('{{ repo.id }}');
+                                    </script>
+                                </td>
+
+                                {% endif %}
+
+                                {% if repo.sync_path %}
+                                <td>
+                                    <a href="file://{{ repo.sync_path }}">{{ repo.sync_path }}</a>
+                                </td>
+                                {% else %}
+                                    <td>
+                                        <a href="#">none</a>
+                                    </td>
+                                {% endif %}
+                            </tr>
+
+                                {% include 'jump.html' %}
+
+                            {% endfor %}
+                         </tbody>
+                    </table>
+                </div>
             </div>
-		</div>
-		<div title="Shared" style="padding:10px" data-options="href : '/repo?page=shared'">
+            <div title="Shared" style="padding:10px" data-options="href : '/repo?page=shared'">
 
-		</div>
-		<div title="Public" style="padding:10px" data-options="href : '/repo?page=public'">
+            </div>
+            <div title="Public" style="padding:10px" data-options="href : '/repo?page=public'">
 
-		</div>
-        <div title="Group" style="padding:10px" data-options="href : '/repo?page=group'">
+            </div>
+            <div title="Group" style="padding:10px" data-options="href : '/repo?page=group'">
 
-		</div>
-        <div title="Synchronized" style="padding:10px" data-options="href : '/repo?page=synchronized'">
+            </div>
+            <div title="Synchronized" style="padding:10px" data-options="href : '/repo?page=synchronized'">
 
 		</div>
 	</div>
@@ -187,11 +188,11 @@
 
 
      function cancel(e) {
-        repo_id = e.getAttribute('data-repoid')
-        $.get("/cancel?repoid="+ repo_id,function(data){
+        console.log('cancle');
+        var repo_id = e.getAttribute('data-repoid');
+        $.get("/cancel?repoid="+ repo_id,{repoid:repo_id}, function(data){
                 if(data.state == 1){
                     refreshTab();
-
                 }
                 else{
                     alert("Failed\n" + data.res)
@@ -205,7 +206,12 @@
         alert("please wait")
     }
 
-
+    function file_list(ele){
+        var list = $(ele).attr('data-file');
+        var option_url = "href : '"+list+"'";
+        console.log(option_url);
+        $(ele).parents('.table-responsive').parent().attr('data-options',option_url);
+    }
 
 
 </script>

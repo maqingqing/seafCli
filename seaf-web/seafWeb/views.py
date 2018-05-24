@@ -16,7 +16,7 @@ SERVER_ADDR = "http://192.168.123.117:8000"
 
 
 class Repo(object):
-    def __init__(self,name, size, id, mtime, sync_status, encrypted):
+    def __init__(self, name, size, id, mtime, sync_status, encrypted):
         self.name = name
         self.size = size
         self.mtime = mtime
@@ -37,9 +37,8 @@ def index(request):
 
 
 def login(request):
-
     if request.method == "GET":
-       # baseAPI.seaf_start_all(CONF_DIR)
+        # baseAPI.seaf_start_all(CONF_DIR)
         return render_to_response("login.html")
 
     if request.method == "POST":
@@ -53,10 +52,10 @@ def login(request):
         token = baseAPI.get_token(serveraddr, username, passwd, CONF_DIR)
 
         if isinstance(token, Error):
-            return render_to_response('login.html',{'err': token.errorMessage,
-                                                    'username': username,
-                                                    'passwd': passwd,
-                                                    'serveraddr': serveraddr})
+            return render_to_response('login.html', {'err': token.errorMessage,
+                                                     'username': username,
+                                                     'passwd': passwd,
+                                                     'serveraddr': serveraddr})
 
         if token is not None:
             response = HttpResponseRedirect("/repo")
@@ -80,7 +79,8 @@ def error(request):
 
 
 def get_repo(request):
-    ctx = {'repo_list': [], 'repo_id': [], 'repo_share_list': [], 'repo_share_all_list': [], 'repo_group_list': {}, 'repo_sync_list': []}
+    ctx = {'repo_list': [], 'repo_id': [], 'repo_share_list': [], 'repo_share_all_list': [], 'repo_group_list': {},
+           'repo_sync_list': []}
 
     serveraddr = request.session.get('serveraddr')
     token = request.session.get('token')
@@ -102,12 +102,12 @@ def get_repo(request):
             sync_path = repos_sync[r.get('id')]['path']
             if r.get('id') not in temp_repo_sync:
                 ctx['repo_sync_list'].append({'name': r.get('name'),
-                                     'id': r.get('id'),
-                                     'size': utilsAPI.convertBytes(r.get('size')),
-                                     'time': t,
-                                     'sync_path': sync_path,
-                                     'sync_status': sync_status,
-                                     'encrypted': r.get('encrypted'), })
+                                              'id': r.get('id'),
+                                              'size': utilsAPI.convertBytes(r.get('size')),
+                                              'time': t,
+                                              'sync_path': sync_path,
+                                              'sync_status': sync_status,
+                                              'encrypted': r.get('encrypted'), })
                 temp_repo_sync.append(r.get('id'))
         elif r.get('id') in new_sync:
             sync_status = new_sync[r.get('id')]
@@ -138,26 +138,26 @@ def get_repo(request):
             # group repo
             if r.get('share_type') == 'public':
                 ctx['repo_share_all_list'].append({'name': r.get('name'),
-                                               'id': r.get('id'),
-                                               'size': r.get('size_formatted'),
-                                               'time': t,
-                                               'sync_path': sync_path,
-                                               'sync_status': sync_status,
-                                               'encrypted': r.get('encrypted'),
-                                               'owner': r.get('share_from'),
-                                               'permission': r.get('permission')})
+                                                   'id': r.get('id'),
+                                                   'size': r.get('size_formatted'),
+                                                   'time': t,
+                                                   'sync_path': sync_path,
+                                                   'sync_status': sync_status,
+                                                   'encrypted': r.get('encrypted'),
+                                                   'owner': r.get('share_from'),
+                                                   'permission': r.get('permission')})
             else:
-                if not ctx['repo_group_list'].get(r.get('group_name'),None):
+                if not ctx['repo_group_list'].get(r.get('group_name'), None):
                     ctx['repo_group_list'][r.get('group_name')] = []
                 ctx['repo_group_list'][r.get('group_name')].append({'name': r.get('name'),
-                                               'id': r.get('id'),
-                                               'size': utilsAPI.convertBytes(r.get('size')),
-                                               'time': t,
-                                               'sync_path': sync_path,
-                                               'sync_status': sync_status,
-                                               'encrypted': r.get('encrypted'),
-                                               'group_name':r.get('group_name'),
-                                               'permission': r.get('permission')})
+                                                                    'id': r.get('id'),
+                                                                    'size': utilsAPI.convertBytes(r.get('size')),
+                                                                    'time': t,
+                                                                    'sync_path': sync_path,
+                                                                    'sync_status': sync_status,
+                                                                    'encrypted': r.get('encrypted'),
+                                                                    'group_name': r.get('group_name'),
+                                                                    'permission': r.get('permission')})
 
     ctx['username'] = request.session.get('username')
     server_addr_split = request.session.get('serveraddr').split('//')[1].split(':')[0]
@@ -170,7 +170,6 @@ def get_repo(request):
 
 
 def create_repo(request):
-
     token = request.session.get('token')
     serveraddr = request.session.get('serveraddr')
 
@@ -186,7 +185,6 @@ def create_repo(request):
 
 
 def download_repo(request):
-
     token = request.session.get('token')
     serveraddr = request.session.get('serveraddr')
 
@@ -203,11 +201,10 @@ def download_repo(request):
 
 
 def get_file_list(request):
-
     token = request.session.get('token')
     serveraddr = request.session.get('serveraddr')
 
-    path = request.GET.get('path','')
+    path = request.GET.get('path', '')
 
     repo_id = request.GET.get('repo_id')
 
@@ -224,7 +221,6 @@ def get_file_list(request):
 
 
 def download_file(request):
-
     token = request.session['token']
     serveraddr = request.session['serveraddr']
     file_name = request.GET.get("file_name")
@@ -233,6 +229,19 @@ def download_file(request):
     download_file_url = fileAPI.seaf_download_file(serveraddr, token, repo_id, file_name)
 
     return JsonResponse({"res": "ok", "download_url": download_file_url, "state": 1})
+
+
+def upload_file(request):
+    url = request.session.get('serveraddr')
+    token = request.session.get('token')
+    file_path = request.GET.get('path')
+    repo_id = request.GET.get('repo_id')
+    print "4444444444444444444444444444444444"
+    print url
+    print file_path
+
+    print fileAPI.get_file_upload_link(url, token, repo_id, file_path)
+    return JsonResponse({'state': 1, 'url': fileAPI.get_file_upload_link(url, token, repo_id, file_path)})
 
 
 def sync(request):
@@ -256,11 +265,13 @@ def desync(request):
 
 
 def cancel_sync_task(request):
-
+    print "444444444444444444444444444444"
     repo_id = request.GET.get('repoid')
+    print repo_id
     if not repo_id:
         return JsonResponse({"res": "err", "state": -2})
-    err = syncAPI.seaf_cancel_sync_task(CONF_DIR,repo_id)
+    err = syncAPI.seaf_cancel_sync_task(CONF_DIR, repo_id)
+    print err
     if err:
         return JsonResponse({"res": err, "state": -2})
     return JsonResponse({"res": "ok", "state": 1})
@@ -275,7 +286,6 @@ def sync_local_list(request):
 
 
 def get_download_progress(request):
-
     print 'sync'
 
     download_rate, upload_rate = syncAPI.seaf_get_rate(CONF_DIR)
@@ -300,9 +310,10 @@ def get_download_progress(request):
             if repos_sync[repo_id]['total'] != 0:
                 finish = float(repos_sync[repo_id]['finish'])
                 total = float(repos_sync[repo_id]['total'])
-                return JsonResponse({"state": repos_sync[repo_id]['state'], 'progress': str(round(finish / total, 3) * 100),
-                                     'rate': rate, 'download_rate': download_rate_s,
-                                     'upload_rate': upload_rate_s})
+                return JsonResponse(
+                    {"state": repos_sync[repo_id]['state'], 'progress': str(round(finish / total, 3) * 100),
+                     'rate': rate, 'download_rate': download_rate_s,
+                     'upload_rate': upload_rate_s})
             else:
                 return JsonResponse({"state": repos_sync[repo_id]['state'], 'progress': -1,
                                      'rate': rate, 'download_rate': download_rate_s,
@@ -317,7 +328,7 @@ def get_download_progress(request):
         total = float(progress.get('total'))
         # print round(finish / total, 3) * 100
         # print type(round(finish / total, 3) * 100)
-        return JsonResponse({"state": state, 'progress': str(round(finish / total, 3) * 100) ,
+        return JsonResponse({"state": state, 'progress': str(round(finish / total, 3) * 100),
                              'rate': str(utilsAPI.convertBytes(progress.get('rate') * 1024)) + "/s",
                              'download_rate': download_rate_s, 'upload_rate': upload_rate_s})
     elif state == 'checkout':
@@ -331,8 +342,7 @@ def get_download_progress(request):
 
         return JsonResponse({"state": state, 'download_rate': download_rate_s, 'upload_rate': upload_rate_s})
     elif state == 'error':
-        return JsonResponse({"state": state,'message': progress.get('message'), 'download_rate': download_rate_s,
+        return JsonResponse({"state": state, 'message': progress.get('message'), 'download_rate': download_rate_s,
                              'upload_rate': upload_rate_s})
-    else :
+    else:
         return JsonResponse({"state": "unknown", 'download_rate': download_rate_s, 'upload_rate': upload_rate_s})
-
