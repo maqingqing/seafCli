@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Seafile</title>
+	<link rel="stylesheet" type="text/css" href="../static/themes/icon.css">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/repo.css">
+    <script type="text/javascript" src="../static/jQuery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/get-sync-progress.js"></script>
+    {% block sc %}{% endblock %}
+</head>
+<body>
+
+    <div style="width:auto;height:auto;">
+
+        <section class="reposHead">
+            <div class="logoImg">
+                <img src="../static/img/mylogo.png" alt="">
+                <span class="logoText">Paladin 云盘</span>
+            </div>
+            <div class="user">
+
+                <div class="btn-group">
+
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                        <img class="picture" src="../static/img/default.png" alt="">
+                        {{ username }}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">
+                                 <img class="picture" src="../static/img/default.png" alt="">
+                                 <span>{{ serveraddr }}</span>
+                            </a>
+
+                        </li>
+                        <li class="logout"><a href="/logout">登出</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <div id="library_tabs" class="row">
+            <div class="fix col-md-2 col-sm-2">
+                <div class="nav-left">
+                    <ul id="myTab">
+                        {% block nav %}{% endblock %}
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2">
+                {% block content %}{% endblock %}
+            </div>
+
+    </div>
+    </div>
+
+
+</body>
+</html>

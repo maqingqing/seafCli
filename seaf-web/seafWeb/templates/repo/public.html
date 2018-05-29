@@ -1,12 +1,31 @@
+{% extends 'base.html' %}
+{% block sc %}
+     <script type="text/javascript" src="../static/homepage.js"></script>
+{% endblock %}
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>欢迎使用seafile</title>
-<script src="../../static/jQuery-2.2.0.min.js"></script>
-</head>
-<body>
+
+{% block nav %}
+
+    <li class="navLi">
+        <a href="/">Mylibrary</a>
+    </li>
+    <li class="navLi">
+        <a href="/repo?page=shared">Shared</a>
+    </li>
+    <li class="navLi active">
+        <a href="/repo?page=public">Public</a>
+    </li>
+    <li class="navLi">
+        <a href="/repo?page=group">Group</a>
+    </li>
+    <li class="navLi">
+        <a href="/repo?page=synchronized">Synchronized</a>
+    </li>
+
+
+{% endblock %}
+
+{% block content %}
 
 
     <div class="table-responsive">
@@ -33,7 +52,7 @@
                     {% else %}
                     <img src="../static/img/sync-folder-20.png">
                     {% endif %}
-                    <a href="/repo/file_list?repo_id={{ repo.id }}">{{ repo.name }}</a>
+                    <a href="/repo/file_list?repo_id={{ repo.id }}&attr=public">{{ repo.name }}</a>
                 </td>
                 <td> {{ repo.size }}</td>
                 <td> {{ repo.time }}</td>
@@ -54,8 +73,11 @@
                 <td>{{ repo.sync_status }}</td>
                 <td>
                     <input class="optionBtn" type="button" value="cancel-sync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="cancel(this)" />
-                    <div class="easyui-progressbar" data-options="value:0" style="width:50px;float:left" data-progressname="{{ repo.id }}"></div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-warning" data-progressname="{{ repo.id }}" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
+                            <span>1%</span>
+                        </div>
+                    </div>
                     <span>0.0 KB/s</span>
                     <script type="text/javascript" async="async">
                             progress('{{ repo.id }}');
@@ -172,6 +194,4 @@
             </tbody>
         </table>
     </div>
-
-</body>
-</html>
+{% endblock %}

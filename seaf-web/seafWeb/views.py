@@ -208,6 +208,7 @@ def get_file_list(request):
 
     repo_id = request.GET.get('repo_id')
 
+    attr = request.GET.get('attr')
     file_list = fileAPI.seaf_file_list(serveraddr, token, repo_id, path)
     # print file_list
     for i in range(len(file_list)):
@@ -216,8 +217,11 @@ def get_file_list(request):
         if file.get('size', None):
             file_list[i]['size'] = utilsAPI.convertBytes(file['size'])
 
-    # print(type(file_list))
-    return render_to_response('filelist.html', {'file_list': file_list, 'repo_id': repo_id, 'parent_dir': path})
+    username = request.session.get('username')
+    server_addr_split = request.session.get('serveraddr').split('//')[1].split(':')[0]
+    serveraddr = server_addr_split
+    return render_to_response('filelist.html', {'file_list': file_list, 'repo_id': repo_id, 'parent_dir': path, 'attr': attr,
+                                                'username': username, 'serveraddr': serveraddr})
 
 
 def download_file(request):
@@ -225,10 +229,20 @@ def download_file(request):
     serveraddr = request.session['serveraddr']
     file_name = request.GET.get("file_name")
     repo_id = request.GET.get("repo_id")
-    # print "%s %s" %(file_name, repo_id)
-    download_file_url = fileAPI.seaf_download_file(serveraddr, token, repo_id, file_name)
+    file_type = request.GET.get("file_type")
+    print(file_name, file_type, repo_id)
+    if request.method == 'GET':
+        print "get"
+        download_file_url = fileAPI.seaf_download_file(serveraddr, token, repo_id, file_name, file_type)
+        if not download_file_url:
+            return JsonResponse({"res": "failed", "download_url": download_file_url, "state": -2})
+        return JsonResponse({"res": "ok", "download_url": download_file_url, "state": 1})
 
-    return JsonResponse({"res": "ok", "download_url": download_file_url, "state": 1})
+    if request.method == 'DELETE':
+        print "delete"
+        err = fileAPI.delete_file(serveraddr, token, repo_id, file_name, file_type)
+        print err
+        return JsonResponse({"res": err, "state": 1})
 
 
 def upload_file(request):
@@ -236,9 +250,6 @@ def upload_file(request):
     token = request.session.get('token')
     file_path = request.GET.get('path')
     repo_id = request.GET.get('repo_id')
-    print "4444444444444444444444444444444444"
-    print url
-    print file_path
 
     print fileAPI.get_file_upload_link(url, token, repo_id, file_path)
     return JsonResponse({'state': 1, 'url': fileAPI.get_file_upload_link(url, token, repo_id, file_path)})
@@ -286,7 +297,6 @@ def sync_local_list(request):
 
 
 def get_download_progress(request):
-    print 'sync'
 
     download_rate, upload_rate = syncAPI.seaf_get_rate(CONF_DIR)
 

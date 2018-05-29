@@ -1,3 +1,7 @@
+a,a:hover{
+    text-decoration: none;
+    text-underline: none;
+}
 .reposHead{
     height:50px;
 }
@@ -56,7 +60,7 @@
 }
 
 #myTab{
-    background:#f3f3f2;
+    /*background:#f3f3f2;*/
     border:none;
     padding:20px 0;
 }
@@ -64,9 +68,10 @@
     width:100%;
     display: inline-block;
     text-align: center;
+
 }
 #myTab li.active{
-    background: #e7e7e6;
+    /*background: #e7e7e6;*/
 }
 #myTab li.active a{
     color: #446bb3;
@@ -74,22 +79,12 @@
     border:none;
 }
 #myTab li a{
+    display:block;
     color: #333;
     font-weight: bold;
+    padding:10px 6px;
 }
 
-
-
-
-.tabs-header, .tabs-tool {
-    background-color: #f3f3f2;
-}
-.tabs li a.tabs-inner {
-    color: #333333;
-    background-color: #f3f3f2;
-    background: #f3f3f2;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFF5FF,endColorstr=#E0ECFF,GradientType=0);
-}
 
 .tabs-header-left .tabs li a.tabs-inner {
     border:none;
@@ -105,19 +100,6 @@
      color: #333333;
 }
 
-/*@media (min-width: 992px) {*/
-    .col-md-10 {
-        width: 83.33333333% !important;
-    }
-    .col-md-2 {
-        width: 16.66666667% !important;
-        padding-right:0;
-    }
-/*}*/
-
-.tabs-wrap,.tabs-header-left .tabs,.panel-body{
-    width:100% !important;
-}
 
 /*同步等各类按钮的样式*/
 .optionBtn{
@@ -136,13 +118,44 @@
 .tabs{
     border:none;
 }
-.tabs-header.tabs-header-left.col-md-2{
+.col-md-2.fix{
+    padding:0;
     position: fixed;
     top: 50px;
     bottom: 0;
     left: 0;
     z-index: 2;
+    background: #f3f3f2;
 }
 .row{
     margin:0;
+}
+.progress{
+    margin-bottom:3px;
+    margin-top:2px;
+}
+.progress-bar{
+    color: #000000;
+}
+
+.repo_option form,.repo_option .dir_father{
+    float: left;
+    margin-top:6px;
+}
+.repo_option form{
+    margin-left:20px;
+}
+
+.repo_option{
+    height:40px;
+    margin-top:20px;
+    background: #f3f3f2;
+}
+.btncss{
+    background: #446cb3;
+    color: #fff;
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 4px 8px;
+    border-radius: 4px;
 }

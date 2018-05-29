@@ -1,14 +1,4 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>欢迎使用seafile</title>
-<script src="../../static/jQuery-2.2.0.min.js"></script>
-</head>
-<body>
-
-
 <div class="table-responsive" >
     <caption>我的资料库</caption>
     <table class="table">
@@ -33,7 +23,8 @@
                     {% else %}
                     <img src="../static/img/sync-folder-20.png">
                     {% endif %}
-                    <a href="/repo/file_list?repo_id={{ repo.id }}">{{ repo.name }}</a>
+                    <a href="/repo/file_list?repo_id={{ repo.id }}&attr=my">{{ repo.name }}</a>
+{#                    <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="testAddSubPage('new tab','http://www.baidu.com')">{{ repo.name }}</a>#}
                 </td>
                 <td> {{ repo.size }}</td>
                 <td> {{ repo.time }}</td>
@@ -41,20 +32,37 @@
                 {% if repo.sync_status == 'unsync' %}
                 <td> {{ repo.sync_status }}</td>
                 <td>
-                    <input class="optionBtn" type="button" value="sync" data-toggle="modal" data-target="#{{ repo.name }}"/>
+                    <input class="optionBtn" type="button" value="sync" data-toggle="modal" data-target="#{{ repo.name }}" />
                     <input class="optionBtn" type="button" value="pull"  data-toggle="modal" data-target="#{{ repo.name }}pull" />
                 </td>
                 {% elif repo.sync_status == 'synchronized' %}
                 <td>{{ repo.sync_status }}</td>
-                <td> <input class="optionBtn" data-toggle="modal" data-target="#{{ repo.name }}desync" type="button" value="desync"/></td>
+                <td> <input class="optionBtn" data-toggle="modal" data-target="#{{ repo.name }}desync" type="button" value="desync"/>
+{#                    <div class="progress">#}
+{#                        <div class="progress-bar progress-bar-warning" data-progressname="{{ repo.id }}" aria-valuenow="60" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">#}
+{#                            <span>20%</span>#}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#                 <span>0.0 KB/s</span>#}
+{#                    <script>#}
+{#                        console.log($('.progress-bar').parents('.progress').next('span').text('5'));#}
+{#                    </script>#}
+                </td>
 
 
                 {% else %}
                 <td>{{ repo.sync_status }}</td>
                 <td>
                     <input class="optionBtn" type="button" value="cancel-sync" data-repoid="{{ repo.id }}" data-syncpath="{{ repo.sync_path }}" onclick="cancel(this)" />
-                    <div class="easyui-progressbar" data-options="value:0" style="width:50px;float:left" data-progressname="{{ repo.id }}"></div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
+{#                    <div class="easyui-progressbar" data-options="value:0" style="width:50px;float:left" data-progressname="{{ repo.id }}"></div>#}
+{#                    &nbsp;&nbsp;&nbsp;&nbsp;#}
+{#                    <span>0.0 KB/s</span>#}
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-warning" data-progressname="{{ repo.id }}" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
+                            <span>1%</span>
+                        </div>
+                    </div>
                     <span>0.0 KB/s</span>
                     <script type="text/javascript" async="async">
                             progress('{{ repo.id }}');
@@ -82,7 +90,4 @@
 </div>
 
 
-
-</body>
-</html>
 

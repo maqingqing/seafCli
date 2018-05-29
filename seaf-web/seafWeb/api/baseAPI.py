@@ -227,11 +227,13 @@ def get_base_url(url):
 
 
 
-def urlopen(url, data=None, headers=None):
+def urlopen(url, data=None, headers=None, method=None):
     if data:
         data = urllib.urlencode(data)
     headers = headers or {}
     req = urllib2.Request(url, data=data, headers=headers)
+    if method == 'DELETE':
+        req.get_method = lambda: 'DELETE'
     try:
         resp = urllib2.urlopen(req)
     except urllib2.HTTPError as e:
@@ -263,9 +265,8 @@ def get_token(url, username, password, conf_dir):
 
     token_json = urlopen("%s/api2/auth-token/" % url, data=data)
     if isinstance(token_json, Error):
-        # print token_json
+        print token_json
         return token_json
-        # pass
     tmp = json.loads(token_json)
     token = tmp['token']
     return token
